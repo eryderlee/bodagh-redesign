@@ -932,13 +932,13 @@ button.service__summary {
    AUDIENCE — "Built for"
    ============================================================ */
 .audience {
-  padding: var(--section-y) 0;
+  padding: clamp(56px, 6vw, 96px) 0;
   text-align: center;
   background: var(--paper-1);
 }
 .audience__head {
   max-width: var(--max-w);
-  margin: 0 auto clamp(40px, 5vw, 64px);
+  margin: 0 auto clamp(28px, 3.5vw, 48px);
   padding: 0 var(--gutter);
 }
 .audience__title {
@@ -990,7 +990,7 @@ button.service__summary {
   .audience__row { animation: none; flex-wrap: wrap; justify-content: center; }
 }
 .audience__footer {
-  margin-top: clamp(40px, 5vw, 64px);
+  margin-top: clamp(28px, 3.5vw, 48px);
   font-family: var(--font-sans);
   font-size: 14px;
   color: var(--ink-3);
