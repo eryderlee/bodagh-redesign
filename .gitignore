@@ -1,0 +1,18 @@
+.claude/
+.playwright-mcp/
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.local
+.env.*.local
+.vscode/
+.idea/
+
+# Working files (not part of deploy)
+previews/
+docs/
+research/
+source code of bodagh.html
+OWNER-CONFIRMATIONS.md

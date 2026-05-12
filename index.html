@@ -1,0 +1,2949 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bodagh Bookkeeping &amp; Tax · Plain-English tax &amp; bookkeeping for Northern Melbourne</title>
+<meta name="description" content="BAS, payroll, Xero set-up, individual returns — handled by Lara, in plain English, from a desk in Craigieburn.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DESIGN TOKENS — single source of truth
+   ============================================================ */
+:root {
+  --ink-1:   #111111;
+  --ink-2:   #2A2A2D;
+  --ink-3:   #5E5E62;
+  --paper-1: #F8F4EA;
+  --paper-2: #EFE7D2;
+  --paper-3: #E1D5B5;
+  --gold-1:  #C1B596;
+  --gold-2:  #A89272;
+  --gold-3:  #D9CFB5;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans:    "Inter", -apple-system, system-ui, sans-serif;
+
+  --fs-eyebrow:   clamp(11px, 0.7vw + 9px, 13px);
+  --fs-body:      clamp(15px, 0.4vw + 14px, 17px);
+  --fs-lead:      clamp(18px, 0.6vw + 16px, 22px);
+  --fs-h3:        clamp(26px, 1.6vw + 22px, 38px);
+  --fs-h2:        clamp(36px, 3vw + 24px, 64px);
+  --fs-h1:        clamp(40px, 4.5vw + 28px, 80px);
+  --fs-stat:      clamp(40px, 4.5vw + 24px, 84px);
+  --fs-stepnum:   clamp(72px, 8vw + 40px, 144px);
+  --fs-price:     clamp(48px, 4.5vw + 24px, 88px);
+  --fs-quote:     clamp(22px, 1.4vw + 16px, 32px);
+
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --section-y: clamp(80px, 9vw, 144px);
+  --gutter:    clamp(20px, 4vw, 40px);
+  --max-w:     1320px;
+
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-quick: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+body {
+  background: var(--paper-1);
+  color: var(--ink-1);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  font-feature-settings: "ss01", "ss02", "cv11";
+}
+a { color: inherit; text-decoration: none; }
+img, svg { display: block; max-width: 100%; }
+ul { list-style: none; }
+button { font-family: inherit; cursor: pointer; }
+
+/* ============================================================
+   SHARED COMPONENTS
+   ============================================================ */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--gold-2);
+  display: inline-flex; align-items: center; gap: 12px;
+}
+.eyebrow::before {
+  content: ""; width: 24px; height: 1px; background: currentColor;
+}
+
+.link-quiet {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 15px;
+  color: var(--ink-2);
+  font-weight: 500;
+  position: relative;
+  padding: 6px 0;
+}
+.link-quiet::after {
+  content: ""; position: absolute; left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: var(--ink-2);
+  transform-origin: 0 50%; transform: scaleX(0);
+  transition: transform 220ms var(--ease-quick), background-color 220ms var(--ease-quick);
+}
+.link-quiet:hover { color: var(--ink-1); }
+.link-quiet:hover::after { transform: scaleX(1); background: var(--gold-2); }
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 18px 32px;
+  background: var(--ink-1);
+  color: var(--paper-1);
+  border: 1px solid var(--ink-1);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 220ms var(--ease-quick), color 220ms var(--ease-quick), border-color 220ms var(--ease-quick);
+}
+.btn-primary:hover {
+  background: var(--gold-1);
+  color: var(--ink-1);
+  border-color: var(--gold-1);
+}
+.btn-primary svg { transition: transform 240ms var(--ease-out); }
+.btn-primary:hover svg { transform: translateX(4px); }
+
+@keyframes pulse {
+  0% { transform: scale(0.7); opacity: 0.7; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--ink-1);
+  border-bottom: 1px solid transparent;
+  transition: border-color 240ms var(--ease-quick);
+}
+.nav.scrolled { border-color: color-mix(in srgb, var(--gold-1) 35%, transparent); }
+.nav__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 14px var(--gutter);
+  display: flex; align-items: center; gap: var(--space-7);
+}
+.brand { display: inline-flex; align-items: center; }
+.brand img {
+  height: 40px;
+  width: auto;
+}
+.nav__links {
+  display: flex; gap: var(--space-6);
+  margin-left: auto;
+  font-size: 15px;
+  font-weight: 500;
+}
+.nav__links a {
+  position: relative;
+  padding: 4px 0;
+  color: color-mix(in srgb, var(--paper-1) 78%, transparent);
+  transition: color 200ms var(--ease-quick);
+}
+.nav__links a::after {
+  content: ""; position: absolute; left: 0; bottom: 0;
+  width: 100%; height: 1.5px;
+  background: var(--gold-1);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  transition: transform 220ms var(--ease-quick);
+}
+.nav__links a:hover { color: var(--paper-1); }
+.nav__links a:hover::after { transform: scaleX(1); }
+.nav__links a.is-current { color: var(--paper-1); }
+.nav__links a.is-current::after { transform: scaleX(1); }
+.nav__cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 20px;
+  background: var(--gold-1);
+  color: var(--ink-1);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid var(--gold-1);
+  transition: background-color 200ms var(--ease-quick), color 200ms var(--ease-quick), border-color 200ms var(--ease-quick);
+}
+.nav__cta:hover {
+  background: var(--paper-1);
+  color: var(--ink-1);
+  border-color: var(--paper-1);
+}
+/* ====== Mobile nav (burger + drawer) ====== */
+.nav__burger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 40px; height: 40px; padding: 4px; background: transparent; border: none; cursor: pointer; flex-shrink: 0; }
+.nav__burger span { display: block; width: 22px; height: 2px; background: var(--paper-1); border-radius: 2px; transition: transform 280ms var(--ease-out), opacity 200ms; }
+.nav.menu-open .nav__burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav.menu-open .nav__burger span:nth-child(2) { opacity: 0; }
+.nav.menu-open .nav__burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav__close, .nav__drawer-foot { display: none; }
+.nav__backdrop { position: fixed; inset: 0; background: color-mix(in srgb, #000 55%, transparent); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); z-index: 49; opacity: 0; pointer-events: none; transition: opacity 320ms var(--ease-out); }
+.nav__backdrop.is-open { opacity: 1; pointer-events: auto; }
+@media (min-width: 901px) { .nav__backdrop { display: none; } }
+@media (max-width: 900px) {
+  .nav__inner { gap: 12px; }
+  .nav__cta { display: none; }
+  .nav__burger { display: flex; margin-left: auto; }
+  .brand img { height: 32px; }
+
+  .nav__links {
+    flex-direction: column;
+    position: fixed; top: 0; right: 0; bottom: 0;
+    width: min(380px, 88vw);
+    z-index: 51;
+    background: var(--ink-1);
+    margin-left: 0;
+    padding: 0;
+    overflow-y: auto; overflow-x: hidden;
+    align-items: stretch;
+    gap: 0;
+    transform: translateX(100%);
+    transition: transform 380ms var(--ease-out);
+    box-shadow: -24px 0 60px -16px rgba(0,0,0,0.5);
+  }
+  .nav.menu-open .nav__links { transform: translateX(0); }
+
+  .nav__close { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin: 18px 16px 4px auto; background: transparent; border: 1px solid color-mix(in srgb, var(--paper-1) 14%, transparent); border-radius: 50%; color: var(--paper-1); cursor: pointer; flex-shrink: 0; transition: background-color 200ms, border-color 200ms; }
+  .nav__close:hover { background: color-mix(in srgb, var(--paper-1) 6%, transparent); border-color: color-mix(in srgb, var(--gold-1) 45%, transparent); }
+  .nav__close svg { width: 18px; height: 18px; }
+
+  .nav__links a {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--paper-1);
+    padding: 14px 28px;
+    border-top: 1px solid color-mix(in srgb, var(--paper-1) 7%, transparent);
+    transition: color 200ms, background-color 200ms;
+  }
+  .nav__links a:first-of-type { margin-top: 8px; }
+  .nav__links a:hover { background: color-mix(in srgb, var(--gold-1) 8%, transparent); color: var(--gold-1); }
+  .nav__links a.is-current { color: var(--gold-1); }
+  .nav__links a::after { display: none; }
+
+  .nav__drawer-foot {
+    display: flex; flex-direction: column; gap: 14px;
+    margin-top: auto;
+    padding: 24px 28px 28px;
+    border-top: 1px solid color-mix(in srgb, var(--paper-1) 10%, transparent);
+  }
+  .nav__drawer-eyebrow {
+    font-family: var(--font-sans); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold-2);
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .nav__drawer-eyebrow::before { content: ""; width: 20px; height: 1px; background: currentColor; }
+  .nav__drawer-cta {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 16px 24px;
+    background: var(--gold-1); color: var(--ink-1);
+    border: 1px solid var(--gold-1);
+    border-radius: 999px;
+    font-family: var(--font-sans); font-size: 15px; font-weight: 600;
+    transition: background-color 200ms, color 200ms, border-color 200ms;
+  }
+  .nav__drawer-cta:hover { background: var(--paper-1); border-color: var(--paper-1); }
+  .nav__drawer-cta::after { display: none; }
+  .nav__drawer-cta:first-of-type { margin-top: 0; }
+  .nav__drawer-contact { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; font-family: var(--font-sans); font-size: 13px; color: color-mix(in srgb, var(--paper-1) 55%, transparent); }
+  .nav__drawer-contact a { font-family: var(--font-sans); font-size: 14px; font-weight: 500; color: var(--paper-1); padding: 0; border: none; margin: 0; }
+  .nav__drawer-contact a:hover { background: transparent; color: var(--gold-1); }
+
+  .preview-controls, .preview-meta { display: none !important; }
+}
+
+/* ============================================================
+   HERO — split column
+   ============================================================ */
+.hero {
+  position: relative;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: clamp(40px, 7vh, 90px) var(--gutter) clamp(64px, 10vh, 120px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.9fr);
+  gap: clamp(40px, 5vw, 88px);
+  align-items: center;
+  min-height: calc(100vh - 80px);
+}
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-bottom: var(--space-8);
+  }
+}
+.hero__copy { max-width: 620px; }
+.hero__headline {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+  margin-top: var(--space-6);
+  color: var(--ink-1);
+}
+.hero__headline em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold-2);
+}
+.hero__subhead {
+  font-family: var(--font-sans);
+  font-size: var(--fs-lead);
+  line-height: 1.45;
+  margin-top: var(--space-6);
+  max-width: 48ch;
+  color: var(--ink-2);
+  font-weight: 400;
+}
+.hero__ctas {
+  display: flex; flex-wrap: wrap; gap: var(--space-5);
+  margin-top: var(--space-7);
+  align-items: center;
+}
+
+/* Trust signals (availability + ATO credential) below the CTAs */
+.hero__signals {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-top: var(--space-7);
+}
+.signal {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 16px;
+  background: var(--paper-2);
+  border: 1px solid color-mix(in srgb, var(--ink-1) 10%, transparent);
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.2;
+}
+.signal strong { color: var(--ink-1); font-weight: 600; }
+.signal .live {
+  position: relative;
+  display: inline-block; width: 8px; height: 8px;
+  background: var(--gold-2); border-radius: 50%;
+  flex-shrink: 0;
+}
+.signal .live::after {
+  content: ""; position: absolute; inset: -4px;
+  border: 2px solid var(--gold-2); border-radius: 50%;
+  opacity: 0;
+  animation: pulse 2.4s var(--ease-out) infinite;
+}
+.signal--credential svg {
+  color: var(--gold-2);
+  flex-shrink: 0;
+}
+
+/* Hero visual */
+.hero__visual {
+  position: relative;
+  align-self: stretch;
+  display: flex; align-items: center; justify-content: center;
+}
+.photo-card {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 5 / 6;
+  background:
+    radial-gradient(120% 80% at 30% 0%, color-mix(in srgb, var(--gold-1) 18%, var(--paper-2)) 0%, var(--paper-2) 60%),
+    var(--paper-2);
+  border-radius: 14px;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow:
+    0 1px 0 color-mix(in srgb, var(--ink-1) 8%, transparent) inset,
+    0 30px 60px -30px color-mix(in srgb, var(--ink-1) 22%, transparent);
+}
+.photo-card::before {
+  content: "";
+  position: absolute; inset: 14px;
+  border: 1px solid color-mix(in srgb, var(--gold-2) 55%, transparent);
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 5;
+}
+.photo-card.has-image::after {
+  content: "";
+  position: absolute;
+  left: 14px; right: 14px; bottom: 14px;
+  height: 42%;
+  background: linear-gradient(to top, rgba(0,0,0,0.62), rgba(0,0,0,0) 82%);
+  border-radius: 0 0 6px 6px;
+  pointer-events: none;
+  z-index: 2;
+}
+.photo-card__image {
+  position: absolute;
+  inset: 14px;
+  width: calc(100% - 28px);
+  height: calc(100% - 28px);
+  object-fit: cover;
+  border-radius: 6px;
+  z-index: 1;
+}
+.photo-card__svg {
+  position: absolute;
+  inset: 14px;
+  width: calc(100% - 28px);
+  height: calc(100% - 28px);
+  color: var(--gold-2);
+  opacity: 0.55;
+}
+.photo-card__label {
+  position: absolute;
+  top: 26px; left: 26px;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 10px;
+  background: color-mix(in srgb, var(--ink-1) 88%, transparent);
+  color: var(--gold-1);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  z-index: 4;
+}
+.photo-card.has-image .photo-card__label { display: none; }
+.photo-card__caption {
+  position: absolute;
+  left: 30px; right: 30px; bottom: 26px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  color: var(--ink-1);
+  z-index: 4;
+}
+.photo-card__caption span {
+  display: block;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 6px;
+}
+.photo-card.has-image .photo-card__caption {
+  color: var(--paper-1);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+.photo-card.has-image .photo-card__caption span { display: none; }
+
+@media (max-width: 900px) {
+  .photo-card { max-width: 100%; aspect-ratio: 5/5; }
+}
+
+/* ============================================================
+   TRUST STRIP
+   ============================================================ */
+.trust {
+  background: var(--paper-2);
+  border-top: 1px solid color-mix(in srgb, var(--ink-1) 7%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink-1) 7%, transparent);
+  padding: clamp(56px, 8vw, 96px) 0 0;
+  overflow: hidden;
+}
+.reviews-anchor {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-7);
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .reviews-anchor { grid-template-columns: 1fr; gap: var(--space-5); }
+}
+.reviews-stat__row {
+  display: inline-flex; align-items: center; gap: 16px;
+  flex-wrap: wrap;
+}
+.reviews-stat__num {
+  font-family: var(--font-display);
+  font-size: var(--fs-stat);
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--ink-1);
+}
+.reviews-stat__stars {
+  color: var(--gold-2);
+  font-size: clamp(20px, 2vw + 12px, 32px);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.reviews-stat__sub {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+.reviews-stat__sub a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-color: color-mix(in srgb, var(--ink-1) 35%, transparent);
+  transition: text-decoration-color 200ms var(--ease-quick);
+}
+.reviews-stat__sub a:hover { text-decoration-color: var(--gold-2); }
+
+.reviews-anchor__quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(18px, 1.1vw + 14px, 24px);
+  line-height: 1.4;
+  color: var(--ink-2);
+  max-width: 36ch;
+  position: relative;
+  padding-left: 28px;
+  border-left: 2px solid var(--gold-1);
+}
+.reviews-anchor__quote cite {
+  display: block;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 10px;
+}
+
+.g-mark { display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-sans); font-size: 13px; font-weight: 600;
+  color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.12em;
+}
+.g-mark svg { width: 22px; height: 22px; }
+
+.creds {
+  margin-top: clamp(48px, 6vw, 72px);
+  padding: 20px 0;
+  border-top: 1px solid color-mix(in srgb, var(--ink-1) 8%, transparent);
+}
+.creds__row {
+  display: flex; align-items: center;
+  gap: var(--space-7);
+  white-space: nowrap;
+  animation: marquee 50s linear infinite;
+  width: max-content;
+}
+.creds:hover .creds__row { animation-play-state: paused; }
+.creds__item {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.creds__item::after {
+  content: "";
+  display: inline-block;
+  width: 4px; height: 4px;
+  background: var(--gold-1);
+  border-radius: 50%;
+  margin-left: var(--space-7);
+}
+@media (prefers-reduced-motion: reduce) {
+  .creds__row { animation: none; flex-wrap: wrap; justify-content: center; }
+}
+
+/* ============================================================
+   ABOUT / MEET LARA
+   ============================================================ */
+.about {
+  padding: var(--section-y) var(--gutter);
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.about__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 5vw, 88px);
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .about__grid { grid-template-columns: 1fr; }
+}
+.about__visual {
+  position: relative;
+  display: flex; justify-content: center;
+}
+.about__card {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 5 / 6;
+  background:
+    radial-gradient(120% 80% at 30% 0%, color-mix(in srgb, var(--gold-1) 18%, var(--paper-2)) 0%, var(--paper-2) 60%),
+    var(--paper-2);
+  border-radius: 14px;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow:
+    0 1px 0 color-mix(in srgb, var(--ink-1) 8%, transparent) inset,
+    0 30px 60px -30px color-mix(in srgb, var(--ink-1) 22%, transparent);
+}
+.about__card::before {
+  content: "";
+  position: absolute; inset: 14px;
+  border: 1px solid color-mix(in srgb, var(--gold-2) 55%, transparent);
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 5;
+}
+.about__card-label {
+  position: absolute;
+  top: 26px; left: 26px;
+  padding: 6px 10px;
+  background: color-mix(in srgb, var(--ink-1) 88%, transparent);
+  color: var(--gold-1);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  z-index: 4;
+}
+.about__card-svg {
+  position: absolute;
+  inset: 14px;
+  width: calc(100% - 28px);
+  height: calc(100% - 28px);
+  color: var(--gold-2);
+  opacity: 0.55;
+}
+.about__card-caption {
+  position: absolute;
+  left: 30px; right: 30px; bottom: 26px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--ink-1);
+  z-index: 4;
+}
+.about__card-caption span {
+  display: block;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 6px;
+}
+.about__body { max-width: 56ch; }
+.about__headline {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  line-height: 1.02;
+  letter-spacing: -0.022em;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--ink-1);
+  margin-top: var(--space-6);
+  max-width: 18ch;
+}
+.about__lead {
+  font-family: var(--font-sans);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  margin-top: var(--space-6);
+  color: var(--ink-2);
+  max-width: 50ch;
+}
+.about__lead + .about__lead { margin-top: var(--space-4); }
+.credentials {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-top: var(--space-7);
+}
+.credentials li {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid color-mix(in srgb, var(--ink-1) 12%, transparent);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-2);
+  background: var(--paper-1);
+}
+.credentials li::before {
+  content: "";
+  width: 6px; height: 6px;
+  background: var(--gold-1);
+  border-radius: 50%;
+}
+.about__footer {
+  display: flex; align-items: center; gap: var(--space-7);
+  margin-top: var(--space-7);
+  flex-wrap: wrap;
+}
+.signature {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--ink-2);
+  letter-spacing: -0.01em;
+  position: relative;
+  padding-left: 14px;
+}
+.signature::before {
+  content: "—";
+  position: absolute;
+  left: -8px; top: 4px;
+  color: var(--gold-2);
+  font-size: 20px;
+}
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+.services {
+  background: var(--paper-2);
+  border-top: 1px solid color-mix(in srgb, var(--ink-1) 7%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink-1) 7%, transparent);
+  padding: var(--section-y) var(--gutter);
+}
+.services__inner { max-width: var(--max-w); margin: 0 auto; }
+.services__head {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 5vw, 88px);
+  align-items: end;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+@media (max-width: 900px) {
+  .services__head { grid-template-columns: 1fr; align-items: start; }
+}
+.services__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+  margin-top: var(--space-6);
+  color: var(--ink-1);
+}
+.services__title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold-2);
+}
+.services__intro {
+  font-family: var(--font-sans);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 48ch;
+}
+
+.service-list { list-style: none; }
+.service {
+  border-top: 1px solid color-mix(in srgb, var(--ink-1) 12%, transparent);
+}
+.service:last-child {
+  border-bottom: 1px solid color-mix(in srgb, var(--ink-1) 12%, transparent);
+}
+button.service__summary {
+  background: transparent; border: 0; width: 100%; text-align: left;
+  font-family: inherit; color: inherit;
+}
+.service__summary {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) minmax(0, 1.5fr) 48px;
+  align-items: center;
+  gap: var(--space-6);
+  padding: clamp(20px, 2.4vw, 36px) 0;
+  transition: padding-left 280ms var(--ease-out);
+}
+.service__summary:hover { padding-left: 12px; }
+.service[data-open="true"] .service__summary { padding-left: 12px; }
+@media (max-width: 700px) {
+  .service__summary {
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+  }
+  .service__desc { grid-column: 2 / -2; padding-top: 6px; }
+}
+.service__num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 28px;
+  color: var(--gold-2);
+}
+.service__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  color: var(--ink-1);
+  position: relative;
+  display: inline-block;
+}
+.service__name::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 100%; height: 1.5px;
+  background: var(--gold-2);
+  transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform 280ms var(--ease-out);
+}
+.service__summary:hover .service__name::after,
+.service[data-open="true"] .service__name::after { transform: scaleX(1); }
+.service__desc {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--ink-3);
+  line-height: 1.45;
+}
+.service__chevron {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--ink-1) 14%, transparent);
+  color: var(--ink-2);
+  transition: transform 320ms var(--ease-out), background-color 280ms var(--ease-quick), color 280ms var(--ease-quick), border-color 280ms var(--ease-quick);
+}
+.service[data-open="true"] .service__chevron {
+  transform: rotate(45deg);
+  background: var(--ink-1);
+  color: var(--gold-1);
+  border-color: var(--ink-1);
+}
+.service__expand {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 380ms var(--ease-out);
+}
+.service[data-open="true"] .service__expand { grid-template-rows: 1fr; }
+.service__expand-inner { overflow: hidden; min-height: 0; }
+.service__expand-body {
+  padding: 0 0 clamp(24px, 3vw, 40px) clamp(48px, 6vw, 96px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(24px, 3vw, 48px);
+  align-items: start;
+}
+.service__col-info {
+  display: flex; flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+.service__col-info .link-quiet { margin-top: 4px; }
+.service__actions {
+  display: flex; flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+}
+@media (max-width: 700px) {
+  .service__expand-body { grid-template-columns: 1fr; padding-left: 36px; }
+}
+.service__items {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 8px;
+  font-size: 15px;
+  color: var(--ink-2);
+}
+.service__items li {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 4px 0;
+}
+.service__items li::before {
+  content: "";
+  width: 4px; height: 4px;
+  background: var(--gold-1);
+  border-radius: 50%;
+  margin-top: 9px;
+  flex-shrink: 0;
+}
+.service__cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 20px;
+  background: var(--paper-1);
+  color: var(--ink-1);
+  border: 1px solid color-mix(in srgb, var(--ink-1) 14%, transparent);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 220ms var(--ease-quick), color 220ms var(--ease-quick), border-color 220ms var(--ease-quick);
+}
+.service__cta:hover {
+  background: var(--ink-1);
+  color: var(--gold-1);
+  border-color: var(--ink-1);
+}
+.service__cta svg { transition: transform 200ms var(--ease-quick); }
+.service__cta:hover svg { transform: translateX(3px); }
+
+/* ============================================================
+   AUDIENCE — "Built for"
+   ============================================================ */
+.audience {
+  padding: var(--section-y) 0;
+  text-align: center;
+  background: var(--paper-1);
+}
+.audience__head {
+  max-width: var(--max-w);
+  margin: 0 auto clamp(40px, 5vw, 64px);
+  padding: 0 var(--gutter);
+}
+.audience__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  line-height: 1.0;
+  letter-spacing: -0.022em;
+  font-weight: 500;
+  color: var(--ink-1);
+  margin-top: var(--space-5);
+}
+.audience__title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold-2);
+}
+.audience__strip {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+.audience__row {
+  display: flex; align-items: center;
+  gap: 14px;
+  white-space: nowrap;
+  animation: marquee 40s linear infinite;
+  width: max-content;
+}
+.audience__row:has(.pill:hover) { animation-play-state: paused; }
+.pill {
+  display: inline-flex; align-items: center;
+  padding: 12px 26px;
+  border: 1px solid color-mix(in srgb, var(--ink-1) 14%, transparent);
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(20px, 1.7vw + 12px, 36px);
+  color: var(--ink-1);
+  letter-spacing: -0.01em;
+  transition: background-color 240ms var(--ease-quick), color 240ms var(--ease-quick), border-color 240ms var(--ease-quick);
+  background: var(--paper-1);
+}
+.pill:hover {
+  background: var(--ink-1);
+  color: var(--gold-1);
+  border-color: var(--ink-1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .audience__row { animation: none; flex-wrap: wrap; justify-content: center; }
+}
+.audience__footer {
+  margin-top: clamp(40px, 5vw, 64px);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--ink-3);
+}
+.audience__footer a {
+  color: var(--ink-1);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-color: color-mix(in srgb, var(--ink-1) 35%, transparent);
+  transition: text-decoration-color 200ms var(--ease-quick);
+}
+.audience__footer a:hover { text-decoration-color: var(--gold-2); }
+
+/* ============================================================
+   HOW IT WORKS
+   ============================================================ */
+.howitworks {
+  padding: var(--section-y) var(--gutter);
+  max-width: var(--max-w);
+  margin: 0 auto;
+  position: relative;
+}
+.howitworks__head {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 5vw, 88px);
+  align-items: end;
+  margin-bottom: clamp(48px, 6vw, 88px);
+}
+@media (max-width: 900px) {
+  .howitworks__head { grid-template-columns: 1fr; align-items: start; }
+}
+.howitworks__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+  margin-top: var(--space-6);
+  color: var(--ink-1);
+}
+.howitworks__title em {
+  font-style: italic; font-weight: 400; color: var(--gold-2);
+}
+.howitworks__intro {
+  font-family: var(--font-sans);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 50ch;
+}
+.steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(28px, 3vw, 56px);
+  padding-top: var(--space-7);
+}
+.steps::before {
+  content: "";
+  position: absolute;
+  left: 8%; right: 8%;
+  top: calc(var(--space-7) + var(--fs-stepnum) * 0.42);
+  height: 1.5px;
+  background-image: linear-gradient(to right, var(--gold-2) 0 50%, transparent 50% 100%);
+  background-size: 14px 1.5px;
+  background-repeat: repeat-x;
+  z-index: 0;
+}
+@media (max-width: 900px) {
+  .steps { grid-template-columns: 1fr; }
+  .steps::before { display: none; }
+}
+.step {
+  position: relative;
+  z-index: 1;
+  display: flex; flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+.step__num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--fs-stepnum);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, var(--gold-2) 0%, var(--ink-1) 65%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  padding: 0 18px;
+  background-color: var(--paper-1);
+  position: relative;
+}
+.step__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.018em;
+  color: var(--ink-1);
+  max-width: 14ch;
+}
+.step__desc {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 36ch;
+}
+.step__detail {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ink-3);
+  border-left: 1.5px solid var(--gold-2);
+  padding-left: 12px;
+  max-width: 36ch;
+}
+.howitworks__cta {
+  margin-top: clamp(56px, 7vw, 96px);
+  display: flex; align-items: center; gap: var(--space-7);
+  flex-wrap: wrap;
+}
+.howitworks__cta-note {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--ink-3);
+}
+
+/* ============================================================
+   PRICING
+   ============================================================ */
+.pricing {
+  background: var(--paper-2);
+  border-top: 1px solid color-mix(in srgb, var(--ink-1) 7%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink-1) 7%, transparent);
+  padding: var(--section-y) var(--gutter);
+  position: relative;
+}
+.pricing__inner { max-width: var(--max-w); margin: 0 auto; }
+.pricing__head {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 5vw, 88px);
+  align-items: end;
+  margin-bottom: clamp(48px, 6vw, 88px);
+}
+@media (max-width: 900px) {
+  .pricing__head { grid-template-columns: 1fr; align-items: start; }
+}
+.pricing__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+  margin-top: var(--space-6);
+  color: var(--ink-1);
+}
+.pricing__title em { font-style: italic; font-weight: 400; color: var(--gold-2); }
+.pricing__intro {
+  font-family: var(--font-sans);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 48ch;
+}
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 2vw, 32px);
+}
+@media (max-width: 900px) {
+  .tiers { grid-template-columns: 1fr; gap: var(--space-6); }
+}
+.tier {
+  position: relative;
+  background: var(--paper-1);
+  border: 1px solid color-mix(in srgb, var(--ink-1) 10%, transparent);
+  border-radius: 18px;
+  padding: clamp(28px, 3vw, 40px);
+  display: flex; flex-direction: column;
+  gap: var(--space-5);
+  transition: transform 320ms var(--ease-out), box-shadow 320ms var(--ease-out), border-color 320ms var(--ease-out);
+}
+.tier:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 30px 60px -30px color-mix(in srgb, var(--ink-1) 20%, transparent);
+  border-color: color-mix(in srgb, var(--gold-2) 60%, transparent);
+}
+.tier--featured {
+  background: var(--ink-1);
+  color: var(--paper-1);
+  border-color: var(--ink-1);
+}
+.tier--featured:hover { border-color: var(--gold-1); }
+.tier__badge {
+  position: absolute;
+  top: -12px; left: clamp(24px, 3vw, 36px);
+  padding: 6px 14px;
+  background: var(--gold-1);
+  color: var(--ink-1);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-radius: 999px;
+}
+.tier__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1;
+}
+.tier__audience {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.tier--featured .tier__audience { color: var(--gold-3); }
+.tier__price {
+  display: flex; align-items: baseline; gap: 6px;
+  padding: var(--space-5) 0;
+  border-top: 1px solid color-mix(in srgb, var(--ink-1) 10%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink-1) 10%, transparent);
+}
+.tier--featured .tier__price {
+  border-top-color: color-mix(in srgb, var(--paper-1) 16%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--paper-1) 16%, transparent);
+}
+.tier__price-from {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.tier--featured .tier__price-from { color: var(--gold-3); }
+.tier__price-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--fs-price);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ink-1);
+}
+.tier--featured .tier__price-num { color: var(--gold-1); }
+.tier__price-unit {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-3);
+}
+.tier--featured .tier__price-unit { color: var(--gold-3); }
+.tier__items {
+  display: flex; flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.tier--featured .tier__items { color: var(--paper-1); }
+.tier__items li {
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.tier__items li svg {
+  width: 16px; height: 16px;
+  color: var(--gold-2);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.tier--featured .tier__items li svg { color: var(--gold-1); }
+.tier__items--includes::before {
+  content: "Everything in Starter, plus:";
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.tier__items--includes-standard::before {
+  content: "Everything in Standard, plus:";
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.tier--featured .tier__items--includes::before { color: var(--gold-3); }
+.tier__cta {
+  margin-top: auto;
+  padding-top: var(--space-5);
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink-1);
+  position: relative;
+  width: fit-content;
+  align-self: flex-start;
+}
+.tier--featured .tier__cta { color: var(--gold-1); }
+.tier__cta::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: currentColor;
+  transform-origin: 0 50%;
+  transform: scaleX(1);
+  opacity: 0.5;
+  transition: opacity 220ms var(--ease-quick);
+}
+.tier__cta:hover::after { opacity: 1; }
+.tier__cta svg { transition: transform 200ms var(--ease-quick); }
+.tier__cta:hover svg { transform: translateX(4px); }
+
+.pricing__calc {
+  margin-top: clamp(40px, 5vw, 64px);
+  display: flex; justify-content: center;
+}
+.calc-pill {
+  display: inline-flex; align-items: center; gap: 14px;
+  padding: 12px 22px 12px 18px;
+  background: var(--paper-1);
+  border: 1px solid color-mix(in srgb, var(--ink-1) 14%, transparent);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--ink-2);
+  transition: background-color 220ms var(--ease-quick), color 220ms var(--ease-quick), border-color 220ms var(--ease-quick);
+}
+.calc-pill:hover {
+  background: var(--ink-1);
+  color: var(--gold-1);
+  border-color: var(--ink-1);
+}
+.calc-pill__icon {
+  width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--gold-1);
+  color: var(--ink-1);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.calc-pill__icon svg { width: 14px; height: 14px; }
+.calc-pill strong { color: var(--ink-1); font-weight: 600; }
+.calc-pill:hover strong { color: var(--paper-1); }
+
+.pricing__note {
+  margin-top: clamp(24px, 3vw, 40px);
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--ink-3);
+  max-width: 50ch;
+  margin-left: auto; margin-right: auto;
+}
+
+/* Pricing show/hide (preview toggle) */
+
+/* ============================================================
+   REVIEWS — full section
+   ============================================================ */
+.reviews {
+  padding: var(--section-y) var(--gutter);
+  max-width: var(--max-w);
+  margin: 0 auto;
+  position: relative;
+}
+.reviews__head {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 5vw, 88px);
+  align-items: end;
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+@media (max-width: 900px) {
+  .reviews__head { grid-template-columns: 1fr; align-items: start; }
+}
+.reviews__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+  margin-top: var(--space-6);
+  color: var(--ink-1);
+}
+.reviews__title em { font-style: italic; font-weight: 400; color: var(--gold-2); }
+.reviews__intro {
+  font-family: var(--font-sans);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 50ch;
+}
+.reviews__anchor {
+  display: flex; align-items: center;
+  gap: var(--space-6);
+  padding: clamp(20px, 2vw, 28px) clamp(24px, 2.5vw, 36px);
+  background: var(--paper-2);
+  border-radius: 14px;
+  margin-bottom: clamp(40px, 5vw, 56px);
+  flex-wrap: wrap;
+}
+.reviews__anchor-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(40px, 3.5vw + 20px, 64px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ink-1);
+}
+.reviews__anchor-stars {
+  color: var(--gold-2);
+  font-size: clamp(20px, 1.5vw + 12px, 28px);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.reviews__anchor-text {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--ink-2);
+}
+.reviews__anchor-text strong { color: var(--ink-1); font-weight: 600; }
+.reviews__anchor-link {
+  margin-left: auto;
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-1);
+  padding: 12px 20px;
+  border: 1px solid color-mix(in srgb, var(--ink-1) 16%, transparent);
+  border-radius: 999px;
+  background: var(--paper-1);
+  transition: background-color 200ms var(--ease-quick), color 200ms var(--ease-quick), border-color 200ms var(--ease-quick);
+}
+.reviews__anchor-link:hover {
+  background: var(--ink-1);
+  color: var(--gold-1);
+  border-color: var(--ink-1);
+}
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 1.8vw, 28px);
+}
+@media (max-width: 900px) {
+  .reviews__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .reviews__grid { grid-template-columns: 1fr; }
+}
+.review-card {
+  background: var(--paper-1);
+  border: 1px solid color-mix(in srgb, var(--ink-1) 8%, transparent);
+  border-radius: 18px;
+  padding: clamp(24px, 2.4vw, 32px);
+  display: flex; flex-direction: column;
+  gap: 18px;
+  transition: transform 320ms var(--ease-out), box-shadow 320ms var(--ease-out), border-color 320ms var(--ease-out);
+}
+.review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 30px 60px -30px color-mix(in srgb, var(--ink-1) 20%, transparent);
+  border-color: color-mix(in srgb, var(--gold-2) 55%, transparent);
+}
+.review-card__head { display: flex; align-items: center; gap: 14px; }
+.review-card__avatar {
+  width: 46px; height: 46px;
+  flex-shrink: 0;
+  background: var(--gold-1);
+  color: var(--ink-1);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+}
+.review-card__attrib { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.review-card__name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink-1);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.review-card__meta {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.review-card__meta .stars { color: var(--gold-2); letter-spacing: 1.5px; }
+.review-card__meta .sep { opacity: 0.5; }
+.review-card__quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  flex: 1;
+}
+.review-card__quote::before {
+  content: "“";
+  display: inline;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--gold-1);
+  margin-right: 2px;
+  font-size: 1.2em;
+  line-height: 0;
+  vertical-align: -0.18em;
+}
+.review-card__link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gold-2);
+  align-self: flex-start;
+  transition: color 200ms var(--ease-quick), gap 200ms var(--ease-quick);
+}
+.review-card__link svg {
+  width: 12px; height: 12px;
+  transition: transform 200ms var(--ease-quick);
+}
+.review-card__link:hover { color: var(--ink-1); }
+.review-card__link:hover svg { transform: translate(2px, -2px); }
+.review-card--cta {
+  background: var(--ink-1);
+  color: var(--paper-1);
+  border-color: var(--ink-1);
+}
+.review-card--cta:hover { border-color: var(--gold-1); }
+.review-card--cta .review-card__avatar {
+  background: color-mix(in srgb, var(--gold-1) 22%, transparent);
+  color: var(--gold-1);
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+}
+.review-card--cta .review-card__name { color: var(--paper-1); }
+.review-card--cta .review-card__meta { color: var(--gold-3); }
+.review-card--cta .review-card__meta .stars { color: var(--gold-1); }
+.review-card--cta .review-card__quote {
+  color: var(--gold-3);
+  font-style: normal;
+}
+.review-card--cta .review-card__quote::before { display: none; }
+.review-card--cta .review-card__link { color: var(--gold-1); }
+.review-card--cta .review-card__link:hover { color: var(--paper-1); }
+
+/* ============================================================
+   LOCATIONS
+   ============================================================ */
+.locations {
+  background: var(--paper-2);
+  border-top: 1px solid color-mix(in srgb, var(--ink-1) 7%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink-1) 7%, transparent);
+  padding: var(--section-y) var(--gutter);
+  position: relative;
+}
+.locations__inner { max-width: var(--max-w); margin: 0 auto; }
+.locations__head {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(40px, 5vw, 88px);
+  align-items: end;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+@media (max-width: 900px) {
+  .locations__head { grid-template-columns: 1fr; align-items: start; }
+}
+.locations__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+  margin-top: var(--space-6);
+  color: var(--ink-1);
+}
+.locations__title em { font-style: italic; font-weight: 400; color: var(--gold-2); }
+.locations__intro {
+  font-family: var(--font-sans);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 48ch;
+}
+.locations__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(40px, 5vw, 80px);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .locations__grid { grid-template-columns: 1fr; }
+}
+.locations__map {
+  position: relative;
+  border-radius: 18px;
+  border: 1px solid color-mix(in srgb, var(--ink-1) 10%, transparent);
+  background: var(--paper-1);
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -36px color-mix(in srgb, var(--ink-1) 18%, transparent);
+}
+.locations__map iframe {
+  display: block; width: 100%; height: 100%; border: 0;
+  filter: saturate(0.85) brightness(1.02) contrast(0.95);
+}
+.locations__map-overlay {
+  position: absolute;
+  top: 14px; left: 14px;
+  padding: 8px 12px;
+  background: color-mix(in srgb, var(--ink-1) 92%, transparent);
+  color: var(--gold-1);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 2;
+}
+.location {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-5);
+  padding: clamp(18px, 1.8vw, 24px) 0;
+  border-top: 1px solid color-mix(in srgb, var(--ink-1) 10%, transparent);
+  cursor: pointer;
+  transition: padding-left 280ms var(--ease-out);
+}
+.location:last-child {
+  border-bottom: 1px solid color-mix(in srgb, var(--ink-1) 10%, transparent);
+}
+.location:hover { padding-left: 8px; }
+.location__pin {
+  width: 12px; height: 12px;
+  background: var(--gold-2);
+  border-radius: 50%;
+  position: relative;
+}
+.location__pin::after {
+  content: ""; position: absolute; inset: -4px;
+  border: 2px solid var(--gold-2); border-radius: 50%;
+  opacity: 0; transform: scale(0.7);
+  transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out);
+}
+.location:hover .location__pin::after { opacity: 0.6; transform: scale(1.4); }
+.location__name {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 1.3vw + 14px, 30px);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  color: var(--ink-1);
+}
+.location__note {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--ink-3);
+  text-align: right;
+}
+
+/* ============================================================
+   FINAL CTA — ink panel
+   ============================================================ */
+.cta {
+  background: var(--ink-1);
+  color: var(--paper-1);
+  padding: var(--section-y) var(--gutter);
+  position: relative;
+  overflow: hidden;
+}
+.cta__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.cta::before {
+  content: "";
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 60%; height: 140%;
+  background: radial-gradient(50% 50% at 50% 50%, color-mix(in srgb, var(--gold-2) 14%, transparent) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta__eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold-1);
+  display: inline-flex; align-items: center; gap: 12px;
+}
+.cta__eyebrow::before, .cta__eyebrow::after {
+  content: ""; width: 32px; height: 1px; background: currentColor;
+}
+.cta__title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 5.5vw + 24px, 120px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+  color: var(--paper-1);
+  margin: var(--space-6) auto;
+  max-width: 18ch;
+}
+.cta__title em {
+  font-style: italic; font-weight: 400; color: var(--gold-1);
+}
+.cta__subhead {
+  font-family: var(--font-sans);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  color: var(--gold-3);
+  max-width: 52ch;
+  margin: 0 auto var(--space-8);
+}
+.cta__button {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 22px 40px;
+  background: var(--gold-1);
+  color: var(--ink-1);
+  border: 1px solid var(--gold-1);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 220ms var(--ease-quick), color 220ms var(--ease-quick), transform 320ms var(--ease-out);
+}
+.cta__button:hover {
+  background: var(--paper-1);
+  color: var(--ink-1);
+  transform: translateY(-2px);
+}
+.cta__button svg { transition: transform 240ms var(--ease-out); }
+.cta__button:hover svg { transform: translateX(4px); }
+.cta__signals {
+  margin-top: clamp(36px, 4vw, 56px);
+  display: flex; justify-content: center;
+  gap: 12px; flex-wrap: wrap;
+}
+.cta__signal {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 9px 16px;
+  background: color-mix(in srgb, var(--paper-1) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--paper-1) 18%, transparent);
+  border-radius: 999px;
+  font-size: 12.5px;
+  color: var(--gold-3);
+  line-height: 1.2;
+}
+.cta__signal strong { color: var(--paper-1); font-weight: 600; }
+.cta__signal .live {
+  width: 8px; height: 8px;
+  background: var(--gold-1); border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+}
+.cta__signal .live::after {
+  content: ""; position: absolute; inset: -4px;
+  border: 2px solid var(--gold-1); border-radius: 50%;
+  opacity: 0;
+  animation: pulse 2.4s var(--ease-out) infinite;
+}
+.cta__signal svg { color: var(--gold-1); flex-shrink: 0; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: color-mix(in srgb, var(--ink-1) 96%, var(--gold-1));
+  color: color-mix(in srgb, var(--paper-1) 75%, transparent);
+  padding: clamp(56px, 6vw, 88px) var(--gutter) clamp(24px, 3vw, 36px);
+}
+.footer__inner { max-width: var(--max-w); margin: 0 auto; }
+.footer__creds {
+  padding-bottom: clamp(32px, 4vw, 48px);
+  border-bottom: 1px solid color-mix(in srgb, var(--paper-1) 14%, transparent);
+  overflow: hidden;
+}
+.footer__creds-row {
+  display: flex; align-items: center;
+  gap: var(--space-7);
+  white-space: nowrap;
+  animation: marquee 60s linear infinite;
+  width: max-content;
+}
+.footer__creds-row:hover { animation-play-state: paused; }
+.footer__cred {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--paper-1) 60%, transparent);
+}
+.footer__cred::after {
+  content: "";
+  display: inline-block;
+  width: 4px; height: 4px;
+  background: var(--gold-2);
+  border-radius: 50%;
+  margin-left: var(--space-7);
+}
+.footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: clamp(28px, 3vw, 56px);
+  padding: clamp(40px, 5vw, 64px) 0 clamp(32px, 4vw, 56px);
+}
+@media (max-width: 900px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .footer__grid { grid-template-columns: 1fr; } }
+.footer__brand img {
+  height: 36px;
+  margin-bottom: var(--space-5);
+}
+.footer__tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.4;
+  color: color-mix(in srgb, var(--paper-1) 88%, transparent);
+  max-width: 32ch;
+  margin-bottom: var(--space-5);
+}
+.footer__meta {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--paper-1) 65%, transparent);
+}
+.footer__meta strong { color: var(--gold-1); font-weight: 500; }
+.footer__col h4 {
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-1);
+  margin-bottom: var(--space-5);
+}
+.footer__col ul { display: flex; flex-direction: column; gap: 12px; }
+.footer__col a {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: color-mix(in srgb, var(--paper-1) 78%, transparent);
+  transition: color 200ms var(--ease-quick);
+}
+.footer__col a:hover { color: var(--paper-1); }
+.footer__contact-item { display: flex; align-items: center; gap: 10px; }
+.footer__contact-item svg {
+  width: 14px; height: 14px;
+  color: var(--gold-2);
+  flex-shrink: 0;
+}
+.footer__socials { display: flex; gap: 10px; margin-top: var(--space-5); }
+.footer__socials a {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--paper-1) 16%, transparent);
+  border-radius: 50%;
+  transition: background-color 200ms var(--ease-quick), border-color 200ms var(--ease-quick), color 200ms var(--ease-quick);
+}
+.footer__socials a:hover {
+  background: var(--gold-1);
+  border-color: var(--gold-1);
+  color: var(--ink-1);
+}
+.footer__socials svg { width: 16px; height: 16px; }
+.footer__legal {
+  padding-top: clamp(24px, 3vw, 36px);
+  border-top: 1px solid color-mix(in srgb, var(--paper-1) 14%, transparent);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: color-mix(in srgb, var(--paper-1) 55%, transparent);
+}
+.footer__legal-links { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+.footer__legal-links a { color: inherit; transition: color 200ms var(--ease-quick); }
+.footer__legal-links a:hover { color: var(--gold-1); }
+.footer__disclaimer {
+  margin-top: var(--space-5);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--paper-1) 40%, transparent);
+  max-width: 80ch;
+}
+
+/* ============================================================
+   PREVIEW CONTROLS (variant toggle + pricing toggle + meta panel)
+   ============================================================ */
+.preview-controls {
+  position: fixed;
+  top: 84px; right: 20px;
+  z-index: 90;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.toggle {
+  display: inline-flex; align-items: center;
+  padding: 5px;
+  background: var(--ink-1);
+  color: var(--paper-1);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  box-shadow: 0 14px 36px -14px color-mix(in srgb, var(--ink-1) 60%, transparent);
+}
+.toggle__hint {
+  padding: 0 12px 0 16px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+.toggle button {
+  border: 0;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--paper-1);
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 220ms var(--ease-quick), color 220ms var(--ease-quick);
+}
+.toggle button[aria-pressed="true"] {
+  background: var(--gold-1);
+  color: var(--ink-1);
+}
+.toggle button:not([aria-pressed="true"]):hover {
+  background: color-mix(in srgb, var(--paper-1) 14%, transparent);
+}
+@media (max-width: 768px) {
+  .preview-controls {
+    top: auto; bottom: 12px; right: 12px; left: 12px;
+    align-items: center;
+  }
+  .toggle__hint { display: none; }
+}
+
+.preview-meta {
+  position: fixed; right: 20px; bottom: 20px;
+  z-index: 100;
+  padding: 14px 18px;
+  background: var(--ink-1);
+  color: var(--paper-1);
+  border-radius: 12px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.4;
+  max-width: 280px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+}
+.preview-meta strong {
+  display: block; margin-bottom: 6px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--gold-1);
+}
+.preview-meta a { color: var(--gold-1); text-decoration: underline; }
+@media (max-width: 768px) { .preview-meta { display: none; } }
+
+/* Smooth scrolling section anchors */
+section { scroll-margin-top: 80px; }
+</style>
+</head>
+<body>
+
+<!-- ============== NAV ============== -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="#top" aria-label="Bodagh Bookkeeping & Tax">
+      <img src="bodagh-logo.webp" alt="Bodagh Bookkeeping & Tax">
+    </a>
+    <div class="nav__links">
+      <button class="nav__close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+      <a href="#top" class="is-current">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#locations">Locations</a>
+      <a href="#cta">Contact</a>
+      <div class="nav__drawer-foot">
+        <span class="nav__drawer-eyebrow">Ready to chat?</span>
+        <a href="mailto:admin@bodagh.com.au" class="nav__drawer-cta">
+          Book a chat
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <div class="nav__drawer-contact">
+          <a href="tel:+61406344333">0406 344 333</a>
+          <a href="mailto:admin@bodagh.com.au">admin@bodagh.com.au</a>
+        </div>
+      </div>
+    </div>
+    <button class="nav__burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="nav__cta" href="mailto:admin@bodagh.com.au">
+      Book a chat
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</nav>
+
+<a id="top"></a>
+
+<!-- ============== HERO ============== -->
+<section class="hero">
+  <div class="hero__copy">
+    <span class="eyebrow">Bodagh Bookkeeping &amp; Tax · Craigieburn</span>
+
+    <h1 class="hero__headline">
+      Plain-English tax &amp; bookkeeping for <em>Northern Melbourne.</em>
+    </h1>
+
+    <p class="hero__subhead">
+      BAS, payroll, Xero set-up, individual returns — handled by Lara, in plain English,
+      from a desk in Craigieburn. For sole traders, tradies, and small businesses
+      who'd rather not learn accountant-speak.
+    </p>
+
+    <div class="hero__ctas">
+      <a href="mailto:admin@bodagh.com.au" class="btn-primary">
+        Book a 30-min chat
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#services" class="link-quiet">See all services</a>
+    </div>
+
+    <div class="hero__signals">
+      <div class="signal signal--availability">
+        <span class="live"></span>
+        Next available: Tue 3:30pm — Craigieburn
+      </div>
+      <div class="signal signal--credential">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <span><strong>ATO Registered</strong> · Tax &amp; BAS Agent</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__visual">
+    <figure class="photo-card has-image" aria-label="Melbourne skyline at golden hour">
+      <img class="photo-card__image" src="images/hero-07-skyline-alt.jpg" alt="Melbourne CBD skyline at golden hour, viewed from across the Yarra">
+      <figcaption class="photo-card__caption">Melbourne · golden hour</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============== TRUST STRIP ============== -->
+<section class="trust" aria-label="Credentials and reviews">
+  <div class="reviews-anchor">
+    <div class="reviews-stat">
+      <div class="reviews-stat__row">
+        <span class="reviews-stat__num">5.0</span>
+        <div>
+          <div class="reviews-stat__stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <div class="reviews-stat__sub">
+            from <strong>3+ Google reviews</strong> ·
+            <a href="#reviews">Read them →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <blockquote class="reviews-anchor__quote">
+      "Lara explained my BAS in plain English in 10 minutes — I've used three accountants before her and finally feel on top of it."
+      <cite>Recent Google review · Craigieburn</cite>
+    </blockquote>
+
+    <div class="g-mark" aria-hidden="true">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+        <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+        <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/>
+        <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+      </svg>
+      <span>Google</span>
+    </div>
+  </div>
+
+  <div class="creds">
+    <div class="creds__row">
+      <span class="creds__item">ATO Registered Tax Agent</span>
+      <span class="creds__item">BAS Agent</span>
+      <span class="creds__item">Xero Certified Advisor</span>
+      <span class="creds__item">MYOB Partner</span>
+      <span class="creds__item">QuickBooks ProAdvisor</span>
+      <span class="creds__item">TPB Registered</span>
+      <span class="creds__item">ABN XX XXX XXX XXX</span>
+      <span class="creds__item">ATO Registered Tax Agent</span>
+      <span class="creds__item">BAS Agent</span>
+      <span class="creds__item">Xero Certified Advisor</span>
+      <span class="creds__item">MYOB Partner</span>
+      <span class="creds__item">QuickBooks ProAdvisor</span>
+      <span class="creds__item">TPB Registered</span>
+      <span class="creds__item">ABN XX XXX XXX XXX</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== ABOUT / MEET LARA ============== -->
+<section class="about" id="about">
+  <div class="about__grid">
+
+    <div class="about__visual">
+      <figure class="about__card" aria-label="Photo of Lara — placeholder">
+        <span class="about__card-label">Photo · placeholder</span>
+        <svg class="about__card-svg" viewBox="0 0 400 480" fill="none" aria-hidden="true">
+          <g stroke="currentColor" stroke-width="1" opacity="0.55">
+            <line x1="60" y1="170" x2="340" y2="170" />
+            <line x1="60" y1="190" x2="320" y2="190" />
+            <line x1="60" y1="210" x2="300" y2="210" />
+            <line x1="60" y1="230" x2="340" y2="230" />
+            <line x1="60" y1="250" x2="260" y2="250" />
+          </g>
+          <rect x="60" y="135" width="280" height="140" stroke="currentColor" stroke-width="1.4" rx="2" />
+          <g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none">
+            <line x1="80" y1="360" x2="240" y2="390" />
+            <line x1="234" y1="388" x2="260" y2="398" stroke-width="1.5" />
+          </g>
+          <g transform="translate(290, 90)" stroke="currentColor" stroke-width="1.4">
+            <path d="M0 30 V0 H10 Q22 0 22 8 Q22 14 18 16 Q24 18 24 24 Q24 30 14 30 Z" fill="none" />
+          </g>
+        </svg>
+        <figcaption class="about__card-caption">
+          Lara · Craigieburn
+          <span>Photo or signature illustration</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="about__body">
+      <span class="eyebrow">Meet Lara</span>
+      <h2 class="about__headline">
+        Most accountants make tax sound like a foreign language.
+      </h2>
+      <p class="about__lead">
+        I started Bodagh because I wanted to do the opposite — explain what's
+        going on with your numbers in normal English, in the time it takes to
+        drink a coffee, and only charge for what actually moved the needle.
+      </p>
+      <p class="about__lead">
+        I look after sole traders, tradies, cafés, and small companies across
+        the northern Melbourne suburbs — Craigieburn, Roxburgh Park,
+        Greenvale, Mickleham, Donnybrook.
+      </p>
+      <ul class="credentials" aria-label="Credentials">
+        <li>Registered Tax Agent #XXXXX</li>
+        <li>BAS Agent</li>
+        <li>Xero Certified Advisor</li>
+      </ul>
+      <div class="about__footer">
+        <span class="signature">Lara Bodagh</span>
+        <a href="#" class="link-quiet">Read the full story →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== SERVICES ============== -->
+<section class="services" id="services">
+  <div class="services__inner">
+
+    <header class="services__head">
+      <div>
+        <span class="eyebrow">Services</span>
+        <h2 class="services__title">
+          Five families, <em>fifteen things</em> we actually do.
+        </h2>
+      </div>
+      <p class="services__intro">
+        From the BAS lodgement we'll handle next week to the SMSF
+        you've been putting off — pick the family you need and we'll
+        sort the rest in plain English.
+      </p>
+    </header>
+
+    <ul class="service-list">
+
+      <li class="service" data-open="false">
+        <button class="service__summary" type="button" aria-expanded="false">
+          <span class="service__num">01</span>
+          <span class="service__name">Bookkeeping</span>
+          <span class="service__desc">Day-to-day numbers, in plain English, on a schedule that suits.</span>
+          <span class="service__chevron" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </button>
+        <div class="service__expand">
+          <div class="service__expand-inner">
+            <div class="service__expand-body">
+              <div class="service__col-info">
+                <ul class="service__items">
+                  <li>Xero · MYOB · QuickBooks set-up &amp; training</li>
+                  <li>Monthly reconciliation &amp; expense management</li>
+                  <li>BAS lodgement &amp; GST reporting</li>
+                  <li>Accounts payable / receivable workflows</li>
+                  <li>End-of-month financial summaries you can actually read</li>
+                </ul>
+                <a href="#services" class="link-quiet">Read more about Bookkeeping →</a>
+              </div>
+              <div class="service__actions">
+                <a href="mailto:admin@bodagh.com.au" class="service__cta">
+                  Book a bookkeeping chat
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="service" data-open="false">
+        <button class="service__summary" type="button" aria-expanded="false">
+          <span class="service__num">02</span>
+          <span class="service__name">Taxation</span>
+          <span class="service__desc">Returns and lodgements — individuals, sole traders, companies.</span>
+          <span class="service__chevron" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </button>
+        <div class="service__expand">
+          <div class="service__expand-inner">
+            <div class="service__expand-body">
+              <div class="service__col-info">
+                <ul class="service__items">
+                  <li>Individual tax returns (PAYG, multiple jobs, side income)</li>
+                  <li>Sole-trader &amp; partnership returns</li>
+                  <li>Company &amp; trust tax</li>
+                  <li>Capital Gains Tax (CGT) advice</li>
+                  <li>Tax planning &amp; year-end strategy</li>
+                  <li>ATO correspondence handled directly</li>
+                </ul>
+                <a href="#services" class="link-quiet">Read more about Taxation →</a>
+              </div>
+              <div class="service__actions">
+                <a href="mailto:admin@bodagh.com.au" class="service__cta">
+                  Book a tax appointment
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="service" data-open="false">
+        <button class="service__summary" type="button" aria-expanded="false">
+          <span class="service__num">03</span>
+          <span class="service__name">Payroll &amp; Compliance</span>
+          <span class="service__desc">STP, super, leave — handled without the headache.</span>
+          <span class="service__chevron" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </button>
+        <div class="service__expand">
+          <div class="service__expand-inner">
+            <div class="service__expand-body">
+              <div class="service__col-info">
+                <ul class="service__items">
+                  <li>Single Touch Payroll (STP) reporting</li>
+                  <li>Superannuation lodgement &amp; SGC compliance</li>
+                  <li>Leave entitlement tracking &amp; accruals</li>
+                  <li>WorkCover, payroll tax, employee onboarding</li>
+                  <li>FBT &amp; salary-packaging advice</li>
+                </ul>
+                <a href="#services" class="link-quiet">Read more about Payroll →</a>
+              </div>
+              <div class="service__actions">
+                <a href="mailto:admin@bodagh.com.au" class="service__cta">
+                  Book a payroll chat
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="service" data-open="false">
+        <button class="service__summary" type="button" aria-expanded="false">
+          <span class="service__num">04</span>
+          <span class="service__name">Business Advisory</span>
+          <span class="service__desc">Strategy, cashflow, and structure for growing operations.</span>
+          <span class="service__chevron" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </button>
+        <div class="service__expand">
+          <div class="service__expand-inner">
+            <div class="service__expand-body">
+              <div class="service__col-info">
+                <ul class="service__items">
+                  <li>Cashflow forecasting &amp; budgeting</li>
+                  <li>Business structure (sole trader / partnership / company / trust)</li>
+                  <li>Monthly management reporting</li>
+                  <li>Profit &amp; Loss analysis with clear actions</li>
+                  <li>Succession &amp; exit planning</li>
+                </ul>
+                <a href="#services" class="link-quiet">Read more about Advisory →</a>
+              </div>
+              <div class="service__actions">
+                <a href="mailto:admin@bodagh.com.au" class="service__cta">
+                  Book an advisory chat
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="service" data-open="false">
+        <button class="service__summary" type="button" aria-expanded="false">
+          <span class="service__num">05</span>
+          <span class="service__name">SMSF &amp; Property</span>
+          <span class="service__desc">Self-managed super and investment-property accounting.</span>
+          <span class="service__chevron" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </button>
+        <div class="service__expand">
+          <div class="service__expand-inner">
+            <div class="service__expand-body">
+              <div class="service__col-info">
+                <ul class="service__items">
+                  <li>SMSF set-up &amp; annual compliance</li>
+                  <li>SMSF tax returns &amp; member statements</li>
+                  <li>Investment property income &amp; expenses</li>
+                  <li>Depreciation schedules</li>
+                  <li>Capital Gains on property sales</li>
+                </ul>
+                <a href="#services" class="link-quiet">Read more about SMSF &amp; Property →</a>
+              </div>
+              <div class="service__actions">
+                <a href="mailto:admin@bodagh.com.au" class="service__cta">
+                  Book a property / SMSF chat
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+<!-- ============== AUDIENCE STRIP ============== -->
+<section class="audience" id="audience">
+  <div class="audience__head">
+    <span class="eyebrow">Built for</span>
+    <h2 class="audience__title">Sound like <em>you?</em></h2>
+  </div>
+  <div class="audience__strip">
+    <div class="audience__row">
+      <span class="pill">Sole traders</span>
+      <span class="pill">Tradies</span>
+      <span class="pill">Cafés &amp; retail</span>
+      <span class="pill">Allied health</span>
+      <span class="pill">Property investors</span>
+      <span class="pill">SMSFs</span>
+      <span class="pill">Small companies</span>
+      <span class="pill">First-time lodgers</span>
+      <span class="pill">Sole traders</span>
+      <span class="pill">Tradies</span>
+      <span class="pill">Cafés &amp; retail</span>
+      <span class="pill">Allied health</span>
+      <span class="pill">Property investors</span>
+      <span class="pill">SMSFs</span>
+      <span class="pill">Small companies</span>
+      <span class="pill">First-time lodgers</span>
+    </div>
+  </div>
+  <div class="audience__footer">
+    Not on the list? <a href="mailto:admin@bodagh.com.au">Book a chat anyway →</a> — most of what we do bends around your situation, not a category.
+  </div>
+</section>
+
+<!-- ============== HOW IT WORKS ============== -->
+<section class="howitworks" id="how">
+  <header class="howitworks__head">
+    <div>
+      <span class="eyebrow">How it works</span>
+      <h2 class="howitworks__title">
+        Three steps. <em>One chat</em> to start.
+      </h2>
+    </div>
+    <p class="howitworks__intro">
+      Most people are surprised how light the process feels.
+      No paperwork before you've met us, no jargon during, and a
+      clear summary after.
+    </p>
+  </header>
+
+  <ol class="steps">
+    <li class="step">
+      <span class="step__num">01</span>
+      <h3 class="step__title">Book a 30-min chat</h3>
+      <p class="step__desc">
+        Pick a time online. No paperwork yet — just a chat about
+        where you're at and what you need.
+      </p>
+      <p class="step__detail">
+        Free. No pitch. No commitment. By the end you'll know
+        what we'd actually do for you and roughly what it'd cost.
+      </p>
+    </li>
+    <li class="step">
+      <span class="step__num">02</span>
+      <h3 class="step__title">We get you set up</h3>
+      <p class="step__desc">
+        We'll tell you exactly what to send (less than you think),
+        and handle the rest in Xero, MYOB, or QuickBooks.
+      </p>
+      <p class="step__detail">
+        Usually a one-week handover. We'll take over from your
+        previous accountant directly if you'd rather not have
+        that conversation.
+      </p>
+    </li>
+    <li class="step">
+      <span class="step__num">03</span>
+      <h3 class="step__title">Ongoing, in plain English</h3>
+      <p class="step__desc">
+        Monthly check-ins. BAS lodged on time. A summary that
+        actually makes sense. You always know your numbers.
+      </p>
+      <p class="step__detail">
+        Reach Lara by SMS, email, or just walk in. Most questions
+        get a same-day reply.
+      </p>
+    </li>
+  </ol>
+
+  <div class="howitworks__cta">
+    <a href="mailto:admin@bodagh.com.au" class="btn-primary">
+      Book your 30-min chat
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <span class="howitworks__cta-note">
+      Free · No commitment · 30 minutes · Craigieburn or online
+    </span>
+  </div>
+</section>
+
+<!-- ============== PRICING ============== -->
+<section class="pricing" id="pricing">
+  <div class="pricing__inner">
+    <header class="pricing__head">
+      <div>
+        <span class="eyebrow">Pricing</span>
+        <h2 class="pricing__title">
+          Plain numbers. <em>No "contact us for a quote."</em>
+        </h2>
+      </div>
+      <p class="pricing__intro">
+        Pick the tier that fits. Switch up or down at the end of
+        any month. We'll tell you on the chat which one suits.
+      </p>
+    </header>
+
+    <div class="tiers">
+
+      <article class="tier">
+        <header>
+          <p class="tier__audience">For sole traders</p>
+          <h3 class="tier__name">Starter</h3>
+        </header>
+        <div class="tier__price">
+          <span class="tier__price-from">From</span>
+          <span class="tier__price-num">$99</span>
+          <span class="tier__price-unit">/month + GST</span>
+        </div>
+        <ul class="tier__items">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Quarterly BAS lodgement</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Basic bookkeeping (up to ~80 transactions / month)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Xero or MYOB set-up &amp; training</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>End-of-year individual tax return</li>
+        </ul>
+        <a href="mailto:admin@bodagh.com.au" class="tier__cta">
+          Book to discuss
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <article class="tier tier--featured">
+        <span class="tier__badge">Most popular</span>
+        <header>
+          <p class="tier__audience">For small businesses with staff</p>
+          <h3 class="tier__name">Standard</h3>
+        </header>
+        <div class="tier__price">
+          <span class="tier__price-from">From</span>
+          <span class="tier__price-num">$249</span>
+          <span class="tier__price-unit">/month + GST</span>
+        </div>
+        <ul class="tier__items tier__items--includes">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Payroll &amp; Single Touch Payroll (STP)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Monthly reconciliation &amp; reporting</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Quarterly check-in call</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Company tax return</li>
+        </ul>
+        <a href="mailto:admin@bodagh.com.au" class="tier__cta">
+          Book to discuss
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+      <article class="tier">
+        <header>
+          <p class="tier__audience">For growing &amp; multi-entity</p>
+          <h3 class="tier__name">Full Service</h3>
+        </header>
+        <div class="tier__price">
+          <span class="tier__price-from">From</span>
+          <span class="tier__price-num">$499</span>
+          <span class="tier__price-unit">/month + GST</span>
+        </div>
+        <ul class="tier__items tier__items--includes-standard">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Management reporting + cashflow forecasting</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>SMSF or property-structure advice</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Dedicated email + SMS support</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Multi-entity (trust / company / SMSF) handled together</li>
+        </ul>
+        <a href="mailto:admin@bodagh.com.au" class="tier__cta">
+          Book to discuss
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </article>
+
+    </div>
+
+    <div class="pricing__calc">
+      <button type="button" class="calc-pill">
+        <span class="calc-pill__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11h6M9 15h6M9 7h6M5 21h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2z"/></svg>
+        </span>
+        Not sure which suits you? <strong>Tell me in 3 clicks →</strong>
+      </button>
+    </div>
+
+    <p class="pricing__note">
+      Prices are starting points — your tier might be slightly higher or lower
+      depending on transaction volume and complexity. We'll tell you on the chat.
+    </p>
+
+  </div>
+</section>
+
+<!-- ============== REVIEWS ============== -->
+<section class="reviews" id="reviews">
+  <header class="reviews__head">
+    <div>
+      <span class="eyebrow">Reviews</span>
+      <h2 class="reviews__title">
+        Real Google reviews. <em>Unedited.</em>
+      </h2>
+    </div>
+    <p class="reviews__intro">
+      Every word below is from a real client. Click through to read
+      them on Google — or, if you've worked with Bodagh and we
+      haven't asked yet: please leave a review yourself, it takes
+      under a minute and matters more than we let on.
+    </p>
+  </header>
+
+  <div class="reviews__anchor">
+    <span class="reviews__anchor-num">5.0</span>
+    <div>
+      <div class="reviews__anchor-stars" aria-label="5 out of 5 stars">★★★★★</div>
+      <div class="reviews__anchor-text">
+        from <strong>3+ Google reviews</strong>
+      </div>
+    </div>
+    <span class="g-mark" aria-hidden="true">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+        <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+        <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/>
+        <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+      </svg>
+    </span>
+    <a href="#" class="reviews__anchor-link">
+      Read all on Google
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+    </a>
+  </div>
+
+  <div class="reviews__grid">
+
+    <article class="review-card">
+      <header class="review-card__head">
+        <span class="review-card__avatar" aria-hidden="true">B</span>
+        <div class="review-card__attrib">
+          <div class="review-card__name">Ben Roach</div>
+          <div class="review-card__meta">
+            <span class="stars" aria-label="5 of 5 stars">★★★★★</span>
+            <span class="sep">·</span>
+            <span>Business Services</span>
+          </div>
+        </div>
+      </header>
+      <blockquote class="review-card__quote">
+        Working with Lara is always enjoyable, efficient and detailed in the right areas.
+        I would highly recommend Bodagh's services to anyone needing bookkeeping support.
+      </blockquote>
+      <a href="#" class="review-card__link">
+        View on Google
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      </a>
+    </article>
+
+    <article class="review-card">
+      <header class="review-card__head">
+        <span class="review-card__avatar" aria-hidden="true">G</span>
+        <div class="review-card__attrib">
+          <div class="review-card__name">Goaver Racky</div>
+          <div class="review-card__meta">
+            <span class="stars" aria-label="5 of 5 stars">★★★★★</span>
+            <span class="sep">·</span>
+            <span>Business Owner</span>
+          </div>
+        </div>
+      </header>
+      <blockquote class="review-card__quote">
+        We've trusted Bodagh Bookkeeping &amp; Tax for our company's accounting and tax needs.
+        Their attention to detail and consistent support have been outstanding. Highly recommended.
+      </blockquote>
+      <a href="#" class="review-card__link">
+        View on Google
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      </a>
+    </article>
+
+    <article class="review-card review-card--cta">
+      <header class="review-card__head">
+        <span class="review-card__avatar" aria-hidden="true">+</span>
+        <div class="review-card__attrib">
+          <div class="review-card__name">Worked with Bodagh?</div>
+          <div class="review-card__meta">
+            <span class="stars" aria-label="Five stars">★★★★★</span>
+            <span class="sep">·</span>
+            <span>Would mean a lot</span>
+          </div>
+        </div>
+      </header>
+      <p class="review-card__quote">
+        A Google review takes less than 60 seconds — and helps the
+        next sole trader in Craigieburn find an accountant who'll
+        actually explain things in plain English.
+      </p>
+      <a href="#" class="review-card__link">
+        Leave a review
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      </a>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== LOCATIONS ============== -->
+<section class="locations" id="locations">
+  <div class="locations__inner">
+
+    <header class="locations__head">
+      <div>
+        <span class="eyebrow">Locations</span>
+        <h2 class="locations__title">
+          Northern Melbourne, <em>mostly.</em>
+        </h2>
+      </div>
+      <p class="locations__intro">
+        Based in Craigieburn. Most clients come from the surrounding suburbs —
+        but bookkeeping doesn't need a postcode, so we work with people all
+        over Melbourne online.
+      </p>
+    </header>
+
+    <div class="locations__grid">
+
+      <div class="locations__map" aria-label="Service area — Northern Melbourne">
+        <span class="locations__map-overlay">Service area</span>
+        <iframe
+          src="https://www.google.com/maps?q=Craigieburn,Victoria,Australia&t=&z=11&ie=UTF8&iwloc=&output=embed"
+          title="Bodagh service area — Craigieburn and surrounding northern Melbourne suburbs"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
+
+      <ul class="locations__list">
+        <li class="location">
+          <span class="location__pin"></span>
+          <span class="location__name">Craigieburn</span>
+          <span class="location__note">Primary office<br>Walk in or book ahead</span>
+        </li>
+        <li class="location">
+          <span class="location__pin"></span>
+          <span class="location__name">Roxburgh Park</span>
+          <span class="location__note">In-person or online<br>≈ 6 min from office</span>
+        </li>
+        <li class="location">
+          <span class="location__pin"></span>
+          <span class="location__name">Greenvale</span>
+          <span class="location__note">In-person or online<br>≈ 10 min from office</span>
+        </li>
+        <li class="location">
+          <span class="location__pin"></span>
+          <span class="location__name">Mickleham</span>
+          <span class="location__note">In-person or online<br>≈ 12 min from office</span>
+        </li>
+        <li class="location">
+          <span class="location__pin"></span>
+          <span class="location__name">Donnybrook</span>
+          <span class="location__note">In-person or online<br>≈ 18 min from office</span>
+        </li>
+        <li class="location">
+          <span class="location__pin" style="background:#5E5E62; opacity:0.6;"></span>
+          <span class="location__name" style="font-style:italic; color:var(--ink-3);">Everywhere else</span>
+          <span class="location__note">Online, by appointment</span>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== FINAL CTA ============== -->
+<section class="cta" id="cta">
+  <div class="cta__inner">
+    <span class="cta__eyebrow">Let's start</span>
+    <h2 class="cta__title">
+      Let's <em>sort this out.</em>
+    </h2>
+    <p class="cta__subhead">
+      Book a 30-minute chat. It's free, no pitch, no paperwork —
+      just a conversation about what you actually need and how we'd handle it.
+    </p>
+    <a href="mailto:admin@bodagh.com.au" class="cta__button">
+      Book your 30-min chat
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <div class="cta__signals">
+      <div class="cta__signal">
+        <span class="live"></span>
+        Next available: <strong>Tue 3:30pm</strong> — Craigieburn
+      </div>
+      <div class="cta__signal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <strong>ATO Registered</strong> · Tax &amp; BAS Agent
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="footer">
+  <div class="footer__inner">
+
+    <div class="footer__creds">
+      <div class="footer__creds-row">
+        <span class="footer__cred">ATO Registered Tax Agent</span>
+        <span class="footer__cred">BAS Agent</span>
+        <span class="footer__cred">Xero Certified Advisor</span>
+        <span class="footer__cred">MYOB Partner</span>
+        <span class="footer__cred">QuickBooks ProAdvisor</span>
+        <span class="footer__cred">TPB Registered</span>
+        <span class="footer__cred">ABN XX XXX XXX XXX</span>
+        <span class="footer__cred">ATO Registered Tax Agent</span>
+        <span class="footer__cred">BAS Agent</span>
+        <span class="footer__cred">Xero Certified Advisor</span>
+        <span class="footer__cred">MYOB Partner</span>
+        <span class="footer__cred">QuickBooks ProAdvisor</span>
+        <span class="footer__cred">TPB Registered</span>
+        <span class="footer__cred">ABN XX XXX XXX XXX</span>
+      </div>
+    </div>
+
+    <div class="footer__grid">
+
+      <div class="footer__brand">
+        <img src="bodagh-logo.webp" alt="Bodagh Bookkeeping & Tax">
+        <p class="footer__tagline">
+          Plain-English tax &amp; bookkeeping for Northern Melbourne.
+        </p>
+        <p class="footer__meta">
+          <strong>Registered Tax Agent #XXXXX</strong><br>
+          ABN XX XXX XXX XXX<br>
+          Operated by Lara Bodagh
+        </p>
+        <div class="footer__socials">
+          <a href="https://www.facebook.com/people/Bodagh-Bookkeeping-Tax/61582640077445/" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.197 21.728v-7.413H6.61V11.31h2.587V8.92c0-2.62 1.616-4.05 3.954-4.05 1.12 0 2.082.084 2.362.121v2.74h-1.622c-1.27 0-1.516.603-1.516 1.49v1.953h3.034l-.395 3.005h-2.64v7.55"/></svg>
+          </a>
+          <a href="https://www.instagram.com/p/DQMEwCvD01L/" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="#top">Home</a></li>
+          <li><a href="#about">About Lara</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#locations">Locations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Bookkeeping</a></li>
+          <li><a href="#services">Taxation</a></li>
+          <li><a href="#services">Payroll &amp; Compliance</a></li>
+          <li><a href="#services">Business Advisory</a></li>
+          <li><a href="#services">SMSF &amp; Property</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Get in touch</h4>
+        <ul>
+          <li class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:+61406344333">0406 344 333</a>
+          </li>
+          <li class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:admin@bodagh.com.au">admin@bodagh.com.au</a>
+          </li>
+          <li class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+            9 AM – 5 PM, Mon – Fri
+          </li>
+          <li class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Craigieburn, VIC
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__legal">
+      <div class="footer__legal-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Disclaimer</a>
+        <a href="#">Cookies</a>
+      </div>
+      <div class="footer__copyright">
+        © 2019 – <span id="year">2026</span> Bodagh Bookkeeping &amp; Tax · All rights reserved
+      </div>
+    </div>
+
+    <p class="footer__disclaimer">
+      Liability limited by a scheme approved under Professional Standards Legislation (if applicable — see OWNER-CONFIRMATIONS #24).
+      Information on this site is general; for personal advice book a chat. Bodagh Bookkeeping &amp; Tax is a registered business in Victoria, Australia.
+    </p>
+
+  </div>
+</footer>
+
+<script>
+  // ===== Sticky nav border on scroll =====
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // ===== Mobile burger + drawer =====
+  const burger = document.querySelector('.nav__burger');
+  const closeBtn = document.querySelector('.nav__close');
+  if (burger) {
+    const backdrop = document.createElement('div');
+    backdrop.className = 'nav__backdrop';
+    document.body.appendChild(backdrop);
+    const openMenu = () => {
+      nav.classList.add('menu-open');
+      burger.setAttribute('aria-expanded', 'true');
+      backdrop.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    };
+    const closeMenu = () => {
+      nav.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded', 'false');
+      backdrop.classList.remove('is-open');
+      document.body.style.overflow = '';
+    };
+    burger.addEventListener('click', () => {
+      nav.classList.contains('menu-open') ? closeMenu() : openMenu();
+    });
+    closeBtn?.addEventListener('click', closeMenu);
+    backdrop.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('menu-open')) closeMenu();
+    });
+    document.querySelectorAll('.nav__links a').forEach(a => {
+      a.addEventListener('click', closeMenu);
+    });
+  }
+
+  // ===== Services accordion (single-open, class-driven) =====
+  document.querySelectorAll('.service__summary').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.service');
+      const wasOpen = item.dataset.open === 'true';
+      document.querySelectorAll('.service').forEach(s => {
+        s.dataset.open = 'false';
+        const b = s.querySelector('.service__summary');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.dataset.open = 'true';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // ===== Calculator pill — placeholder modal =====
+  const calcBtn = document.querySelector('.calc-pill');
+  if (calcBtn) {
+    calcBtn.addEventListener('click', () => {
+      alert("Pricing calculator modal — wired in the production build.\n\nWill ask 3 questions:\n  · Sole trader, partnership, company, or trust?\n  · Employees? (Y/N)\n  · Investment property or SMSF? (Y/N)\n\nReturns: Starter / Standard / Full Service recommendation.");
+    });
+  }
+
+  // ===== Auto-update footer year =====
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
