@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact · Bodagh Bookkeeping &amp; Tax</title>
+<meta name="description" content="Get in touch with Lara at Bodagh Bookkeeping & Tax. Call, email, visit, or send a message — a real human replies within one business day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   DESIGN TOKENS — shared with homepage
+   ============================================ */
+:root {
+  --ink-1:#111111; --ink-2:#2A2A2D; --ink-3:#5E5E62;
+  --paper-1:#F8F4EA; --paper-2:#EFE7D2; --paper-3:#E1D5B5;
+  --gold-1:#C1B596; --gold-2:#A89272; --gold-3:#D9CFB5;
+  --font-display:"Fraunces",Georgia,serif;
+  --font-sans:"Inter",-apple-system,system-ui,sans-serif;
+  --fs-eyebrow:clamp(11px,0.7vw + 9px,13px);
+  --fs-body:clamp(15px,0.4vw + 14px,17px);
+  --fs-lead:clamp(18px,0.6vw + 16px,22px);
+  --fs-h3:clamp(26px,1.6vw + 22px,38px);
+  --fs-h2:clamp(36px,3vw + 24px,64px);
+  --fs-h1:clamp(40px,4.5vw + 28px,80px);
+  --space-4:16px; --space-5:24px; --space-6:32px;
+  --space-7:48px; --space-8:64px; --space-9:96px;
+  --section-y:clamp(80px,9vw,144px);
+  --gutter:clamp(20px,4vw,40px);
+  --max-w:1320px;
+  --ease-out:cubic-bezier(0.22,1,0.36,1);
+  --ease-quick:cubic-bezier(0.32,0.72,0,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth;}
+body{background:var(--paper-1);color:var(--ink-1);font-family:var(--font-sans);font-size:var(--fs-body);line-height:1.55;font-feature-settings:"ss01","ss02";}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+ul{list-style:none;}
+button{font-family:inherit;cursor:pointer;}
+@keyframes pulse{0%{transform:scale(0.7);opacity:0.7;}100%{transform:scale(1.7);opacity:0;}}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+.eyebrow{font-family:var(--font-sans);font-size:var(--fs-eyebrow);font-weight:500;text-transform:uppercase;letter-spacing:0.16em;color:var(--gold-2);display:inline-flex;align-items:center;gap:12px;}
+.eyebrow::before{content:"";width:24px;height:1px;background:currentColor;}
+.link-quiet{display:inline-flex;align-items:center;gap:6px;font-size:15px;color:var(--ink-2);font-weight:500;position:relative;padding:6px 0;}
+.link-quiet::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--ink-2);transform-origin:0 50%;transform:scaleX(0);transition:transform 220ms var(--ease-quick),background-color 220ms var(--ease-quick);}
+.link-quiet:hover{color:var(--ink-1);}
+.link-quiet:hover::after{transform:scaleX(1);background:var(--gold-2);}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:18px 32px;background:var(--ink-1);color:var(--paper-1);border:1px solid var(--ink-1);border-radius:999px;font-size:16px;font-weight:500;cursor:pointer;transition:background-color 220ms var(--ease-quick),color 220ms var(--ease-quick),border-color 220ms var(--ease-quick);}
+.btn-primary:hover{background:var(--gold-1);color:var(--ink-1);border-color:var(--gold-1);}
+.btn-primary svg{transition:transform 240ms var(--ease-out);}
+.btn-primary:hover svg{transform:translateX(4px);}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:var(--ink-1);border-bottom:1px solid transparent;transition:border-color 240ms var(--ease-quick);}
+.nav.scrolled{border-color:color-mix(in srgb,var(--gold-1) 35%,transparent);}
+.nav__inner{max-width:var(--max-w);margin:0 auto;padding:14px var(--gutter);display:flex;align-items:center;gap:var(--space-7);}
+.brand{display:inline-flex;align-items:center;}
+.brand img{height:40px;}
+.nav__links{display:flex;gap:var(--space-6);margin-left:auto;font-size:15px;font-weight:500;}
+.nav__links a{position:relative;padding:4px 0;color:color-mix(in srgb,var(--paper-1) 78%,transparent);transition:color 200ms var(--ease-quick);}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1.5px;background:var(--gold-1);transform-origin:0 50%;transform:scaleX(0);transition:transform 220ms var(--ease-quick);}
+.nav__links a:hover{color:var(--paper-1);}
+.nav__links a:hover::after{transform:scaleX(1);}
+.nav__links a.is-current{color:var(--paper-1);}
+.nav__links a.is-current::after{transform:scaleX(1);}
+.nav__cta{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;background:var(--gold-1);color:var(--ink-1);border-radius:999px;font-size:14px;font-weight:500;border:1px solid var(--gold-1);transition:all 200ms var(--ease-quick);}
+.nav__cta:hover{background:var(--paper-1);color:var(--ink-1);border-color:var(--paper-1);}
+.nav__burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;padding:4px;background:transparent;border:none;cursor:pointer;flex-shrink:0;}
+.nav__burger span{display:block;width:22px;height:2px;background:var(--paper-1);border-radius:2px;transition:transform 280ms,opacity 200ms;}
+.nav.menu-open .nav__burger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav.menu-open .nav__burger span:nth-child(2){opacity:0;}
+.nav.menu-open .nav__burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav__close,.nav__drawer-foot{display:none;}
+.nav__backdrop{position:fixed;inset:0;background:color-mix(in srgb,#000 55%,transparent);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:49;opacity:0;pointer-events:none;transition:opacity 320ms var(--ease-out);}
+.nav__backdrop.is-open{opacity:1;pointer-events:auto;}
+@media (min-width:901px){.nav__backdrop{display:none;}}
+@media (max-width:900px){
+  .nav__inner{gap:12px;}
+  .nav__cta{display:none;}
+  .nav__burger{display:flex;margin-left:auto;}
+  .brand img{height:32px;}
+  .nav__links{flex-direction:column;position:fixed;top:0;right:0;bottom:0;width:min(380px,88vw);z-index:51;background:var(--ink-1);margin-left:0;padding:0;overflow-y:auto;overflow-x:hidden;align-items:stretch;gap:0;transform:translateX(100%);transition:transform 380ms var(--ease-out);box-shadow:-24px 0 60px -16px rgba(0,0,0,0.5);}
+  .nav.menu-open .nav__links{transform:translateX(0);}
+  .nav__close{display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin:18px 16px 4px auto;background:transparent;border:1px solid color-mix(in srgb,var(--paper-1) 14%,transparent);border-radius:50%;color:var(--paper-1);cursor:pointer;flex-shrink:0;transition:background-color 200ms,border-color 200ms;}
+  .nav__close:hover{background:color-mix(in srgb,var(--paper-1) 6%,transparent);border-color:color-mix(in srgb,var(--gold-1) 45%,transparent);}
+  .nav__close svg{width:18px;height:18px;}
+  .nav__links a{font-family:var(--font-display);font-size:28px;font-weight:500;color:var(--paper-1);padding:14px 28px;border-top:1px solid color-mix(in srgb,var(--paper-1) 7%,transparent);transition:color 200ms,background-color 200ms;}
+  .nav__links a:first-of-type{margin-top:8px;}
+  .nav__links a:hover{background:color-mix(in srgb,var(--gold-1) 8%,transparent);color:var(--gold-1);}
+  .nav__links a.is-current{color:var(--gold-1);}
+  .nav__links a::after{display:none;}
+  .nav__drawer-foot{display:flex;flex-direction:column;gap:14px;margin-top:auto;padding:24px 28px 28px;border-top:1px solid color-mix(in srgb,var(--paper-1) 10%,transparent);}
+  .nav__drawer-eyebrow{font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-2);display:inline-flex;align-items:center;gap:10px;}
+  .nav__drawer-eyebrow::before{content:"";width:20px;height:1px;background:currentColor;}
+  .nav__drawer-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:16px 24px;background:var(--gold-1);color:var(--ink-1);border:1px solid var(--gold-1);border-radius:999px;font-family:var(--font-sans);font-size:15px;font-weight:600;transition:background-color 200ms,color 200ms,border-color 200ms;}
+  .nav__drawer-cta:hover{background:var(--paper-1);border-color:var(--paper-1);}
+  .nav__drawer-cta::after{display:none;}
+  .nav__drawer-contact{display:flex;flex-direction:column;gap:4px;margin-top:6px;font-family:var(--font-sans);font-size:13px;color:color-mix(in srgb,var(--paper-1) 55%,transparent);}
+  .nav__drawer-contact a{font-family:var(--font-sans);font-size:14px;font-weight:500;color:var(--paper-1);padding:0;border:none;margin:0;}
+  .nav__drawer-contact a:hover{background:transparent;color:var(--gold-1);}
+}
+
+/* ============================================
+   CONTACT METHODS — 3-card row
+   ============================================ */
+.methods{padding:0 var(--gutter) var(--section-y);max-width:var(--max-w);margin:0 auto;}
+.methods__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2vw,28px);}
+@media (max-width:900px){.methods__grid{grid-template-columns:1fr;}}
+.method{display:flex;flex-direction:column;gap:18px;padding:clamp(28px,3vw,40px);background:var(--paper-2);border:1px solid color-mix(in srgb,var(--ink-1) 8%,transparent);border-radius:18px;transition:transform 320ms var(--ease-out),box-shadow 320ms var(--ease-out),border-color 320ms var(--ease-out);}
+.method:hover{transform:translateY(-3px);box-shadow:0 30px 60px -30px color-mix(in srgb,var(--ink-1) 20%,transparent);border-color:color-mix(in srgb,var(--gold-2) 55%,transparent);}
+.method__icon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:var(--ink-1);color:var(--gold-1);border-radius:14px;}
+.method__icon svg{width:22px;height:22px;}
+.method__label{font-family:var(--font-sans);font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-2);}
+.method__value{font-family:var(--font-display);font-size:clamp(24px,1.6vw + 16px,32px);font-weight:500;line-height:1.1;letter-spacing:-0.02em;color:var(--ink-1);}
+.method__value a{color:inherit;transition:color 200ms var(--ease-quick);}
+.method__value a:hover{color:var(--gold-2);}
+.method__note{font-family:var(--font-sans);font-size:13px;color:var(--ink-3);line-height:1.5;margin-top:auto;padding-top:8px;border-top:1px solid color-mix(in srgb,var(--ink-1) 10%,transparent);}
+.method__note strong{color:var(--ink-1);font-weight:600;}
+
+/* ============================================
+   OFFICE — map + details
+   ============================================ */
+.office{background:var(--paper-2);border-top:1px solid color-mix(in srgb,var(--ink-1) 7%,transparent);border-bottom:1px solid color-mix(in srgb,var(--ink-1) 7%,transparent);padding:var(--section-y) var(--gutter);}
+.office__inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(40px,5vw,80px);align-items:stretch;}
+@media (max-width:900px){.office__inner{grid-template-columns:1fr;}}
+.office__map{position:relative;border-radius:18px;border:1px solid color-mix(in srgb,var(--ink-1) 10%,transparent);background:var(--paper-1);overflow:hidden;min-height:380px;box-shadow:0 30px 60px -36px color-mix(in srgb,var(--ink-1) 18%,transparent);}
+.office__map iframe{display:block;width:100%;height:100%;border:0;filter:saturate(0.85) brightness(1.02) contrast(0.95);}
+.office__map-overlay{position:absolute;top:14px;left:14px;padding:8px 12px;background:color-mix(in srgb,var(--ink-1) 92%,transparent);color:var(--gold-1);border-radius:999px;font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;pointer-events:none;z-index:2;}
+.office__details{display:flex;flex-direction:column;justify-content:center;gap:var(--space-7);}
+.office__address h3{font-family:var(--font-display);font-size:var(--fs-h3);font-weight:500;line-height:1.05;letter-spacing:-0.018em;color:var(--ink-1);margin-bottom:8px;}
+.office__address p{font-family:var(--font-display);font-style:italic;font-size:20px;line-height:1.45;color:var(--ink-2);max-width:30ch;}
+.office__hours{display:flex;flex-direction:column;gap:6px;}
+.office__hours-row{display:grid;grid-template-columns:140px 1fr;gap:12px;font-family:var(--font-sans);font-size:14px;color:var(--ink-2);padding:8px 0;border-bottom:1px dashed color-mix(in srgb,var(--ink-1) 14%,transparent);}
+.office__hours-row:last-child{border-bottom:0;}
+.office__hours-row strong{font-weight:600;color:var(--ink-1);font-family:var(--font-sans);}
+.office__hours-row.is-closed{color:var(--ink-3);font-style:italic;}
+.office__access{font-family:var(--font-sans);font-size:13px;color:var(--ink-3);line-height:1.6;padding:14px 18px;background:var(--paper-1);border-radius:12px;border-left:3px solid var(--gold-1);}
+.office__access strong{color:var(--ink-1);font-weight:600;}
+
+/* ============================================
+   FORM SECTION
+   ============================================ */
+.form-section{padding:var(--section-y) var(--gutter);max-width:var(--max-w);margin:0 auto;}
+.form-section__grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(40px,5vw,80px);align-items:start;}
+@media (max-width:900px){.form-section__grid{grid-template-columns:minmax(0,1fr);}}
+.form-section__head{margin-bottom:clamp(36px,4vw,56px);}
+.form-section__title{font-family:var(--font-display);font-size:var(--fs-h2);line-height:0.98;letter-spacing:-0.022em;font-weight:500;margin-top:var(--space-6);color:var(--ink-1);max-width:18ch;}
+.form-section__title em{font-style:italic;font-weight:400;color:var(--gold-2);}
+.form-section__intro{font-family:var(--font-sans);font-size:var(--fs-lead);line-height:1.5;color:var(--ink-2);margin-top:var(--space-5);max-width:48ch;}
+
+/* Form */
+.contact-form{display:flex;flex-direction:column;gap:var(--space-5);}
+.contact-form__row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);}
+@media (max-width:600px){.contact-form__row{grid-template-columns:minmax(0,1fr);}}
+.field{display:flex;flex-direction:column;gap:8px;}
+.field label{font-family:var(--font-sans);font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-2);}
+.field input,.field textarea,.field select{width:100%;min-width:0;font-family:var(--font-sans);font-size:15px;line-height:1.5;color:var(--ink-1);padding:14px 16px;background:var(--paper-1);border:1px solid color-mix(in srgb,var(--ink-1) 14%,transparent);border-radius:10px;transition:border-color 200ms var(--ease-quick),background-color 200ms var(--ease-quick),box-shadow 200ms var(--ease-quick);outline:none;}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold-2);background:#fff;box-shadow:0 0 0 4px color-mix(in srgb,var(--gold-1) 30%,transparent);}
+.field textarea{min-height:130px;resize:vertical;font-family:var(--font-sans);}
+.field__hint{font-family:var(--font-sans);font-size:12px;color:var(--ink-3);font-style:italic;}
+.field--checkbox{flex-direction:row;align-items:flex-start;gap:10px;}
+.field--checkbox input{width:18px;height:18px;margin-top:2px;accent-color:var(--gold-2);}
+.field--checkbox label{font-size:13px;color:var(--ink-2);text-transform:none;letter-spacing:0;font-weight:400;line-height:1.5;}
+.contact-form__submit{display:flex;align-items:center;gap:var(--space-5);flex-wrap:wrap;margin-top:var(--space-4);}
+.contact-form__note{font-family:var(--font-sans);font-size:13px;color:var(--ink-3);font-style:italic;display:inline-flex;align-items:center;gap:8px;}
+.contact-form__note .live{width:7px;height:7px;background:var(--gold-2);border-radius:50%;flex-shrink:0;position:relative;}
+.contact-form__note .live::after{content:"";position:absolute;inset:-3px;border:1.5px solid var(--gold-2);border-radius:50%;animation:pulse 2.4s var(--ease-out) infinite;opacity:0;}
+.contact-form__success{display:none;padding:24px 26px;background:var(--ink-1);color:var(--paper-1);border-radius:14px;text-align:center;}
+.contact-form__success strong{display:block;font-family:var(--font-display);font-size:22px;font-style:italic;color:var(--gold-1);margin-bottom:8px;}
+.contact-form.is-submitted .contact-form__main{display:none;}
+.contact-form.is-submitted .contact-form__success{display:block;}
+
+/* Side panel: skip the form, book directly */
+.skip-panel{padding:clamp(28px,3vw,40px);background:var(--ink-1);color:var(--paper-1);border-radius:18px;display:flex;flex-direction:column;gap:18px;}
+.skip-panel__eyebrow{font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-1);}
+.skip-panel__title{font-family:var(--font-display);font-size:clamp(24px,1.6vw + 16px,32px);font-style:italic;font-weight:500;line-height:1.15;color:var(--paper-1);}
+.skip-panel__body{font-family:var(--font-sans);font-size:15px;line-height:1.5;color:var(--gold-3);}
+.skip-panel__button{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;background:var(--gold-1);color:var(--ink-1);border:1px solid var(--gold-1);border-radius:999px;font-family:var(--font-sans);font-size:14px;font-weight:600;align-self:flex-start;transition:background-color 220ms var(--ease-quick),color 220ms var(--ease-quick);}
+.skip-panel__button:hover{background:var(--paper-1);}
+.skip-panel__button svg{width:14px;height:14px;transition:transform 200ms var(--ease-quick);}
+.skip-panel__button:hover svg{transform:translateX(4px);}
+.skip-panel__signal{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-sans);font-size:13px;color:var(--gold-3);padding-top:14px;border-top:1px solid color-mix(in srgb,var(--paper-1) 14%,transparent);}
+.skip-panel__signal .live{width:7px;height:7px;background:var(--gold-1);border-radius:50%;position:relative;flex-shrink:0;}
+.skip-panel__signal .live::after{content:"";position:absolute;inset:-3px;border:1.5px solid var(--gold-1);border-radius:50%;animation:pulse 2.4s var(--ease-out) infinite;opacity:0;}
+.skip-panel__signal strong{color:var(--paper-1);font-weight:600;}
+
+/* ============================================
+   FAQ
+   ============================================ */
+.faq{background:var(--paper-2);border-top:1px solid color-mix(in srgb,var(--ink-1) 7%,transparent);border-bottom:1px solid color-mix(in srgb,var(--ink-1) 7%,transparent);padding:var(--section-y) var(--gutter);}
+.faq__inner{max-width:var(--max-w);margin:0 auto;}
+.faq__head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,5vw,88px);align-items:end;margin-bottom:clamp(48px,6vw,80px);}
+@media (max-width:900px){.faq__head{grid-template-columns:1fr;align-items:start;}}
+.faq__title{font-family:var(--font-display);font-size:var(--fs-h1);line-height:0.96;letter-spacing:-0.025em;font-weight:500;margin-top:var(--space-6);color:var(--ink-1);}
+.faq__title em{font-style:italic;font-weight:400;color:var(--gold-2);}
+.faq__intro{font-family:var(--font-sans);font-size:var(--fs-lead);line-height:1.5;color:var(--ink-2);max-width:48ch;}
+
+.faq-list{list-style:none;}
+.faq-item{border-top:1px solid color-mix(in srgb,var(--ink-1) 12%,transparent);}
+.faq-item:last-child{border-bottom:1px solid color-mix(in srgb,var(--ink-1) 12%,transparent);}
+button.faq__q{background:transparent;border:0;width:100%;text-align:left;font-family:inherit;color:inherit;display:grid;grid-template-columns:minmax(0,1fr) 40px;align-items:center;gap:var(--space-5);padding:clamp(20px,2.4vw,28px) 0;transition:padding-left 280ms var(--ease-out);}
+.faq__q:hover{padding-left:8px;}
+.faq-item[data-open="true"] .faq__q{padding-left:8px;}
+.faq__q-text{font-family:var(--font-display);font-size:clamp(20px,1.1vw + 14px,26px);font-weight:500;letter-spacing:-0.012em;color:var(--ink-1);line-height:1.25;}
+.faq__chevron{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid color-mix(in srgb,var(--ink-1) 14%,transparent);color:var(--ink-2);transition:transform 320ms var(--ease-out),background-color 280ms var(--ease-quick),color 280ms var(--ease-quick),border-color 280ms var(--ease-quick);}
+.faq-item[data-open="true"] .faq__chevron{transform:rotate(45deg);background:var(--ink-1);color:var(--gold-1);border-color:var(--ink-1);}
+.faq__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows 380ms var(--ease-out);}
+.faq-item[data-open="true"] .faq__a{grid-template-rows:1fr;}
+.faq__a-inner{overflow:hidden;min-height:0;}
+.faq__a-body{padding:0 0 clamp(20px,2.4vw,28px) 0;font-family:var(--font-sans);font-size:16px;line-height:1.6;color:var(--ink-2);max-width:70ch;}
+.faq__a-body p + p{margin-top:12px;}
+
+/* ============================================
+   FINAL CTA — same as homepage
+   ============================================ */
+.cta{background:var(--ink-1);color:var(--paper-1);padding:var(--section-y) var(--gutter);position:relative;overflow:hidden;}
+.cta__inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:2;}
+.cta::before{content:"";position:absolute;top:-20%;right:-10%;width:60%;height:140%;background:radial-gradient(50% 50% at 50% 50%,color-mix(in srgb,var(--gold-2) 14%,transparent) 0%,transparent 70%);pointer-events:none;}
+.cta__eyebrow{font-family:var(--font-sans);font-size:var(--fs-eyebrow);font-weight:500;text-transform:uppercase;letter-spacing:0.18em;color:var(--gold-1);display:inline-flex;align-items:center;gap:12px;}
+.cta__eyebrow::before,.cta__eyebrow::after{content:"";width:32px;height:1px;background:currentColor;}
+.cta__title{font-family:var(--font-display);font-size:clamp(40px,4.5vw + 20px,96px);line-height:0.94;letter-spacing:-0.03em;font-weight:500;color:var(--paper-1);margin:var(--space-6) auto;max-width:20ch;}
+.cta__title em{font-style:italic;font-weight:400;color:var(--gold-1);}
+.cta__subhead{font-family:var(--font-sans);font-size:var(--fs-lead);line-height:1.5;color:var(--gold-3);max-width:52ch;margin:0 auto var(--space-8);}
+.cta__button{display:inline-flex;align-items:center;gap:12px;padding:22px 40px;background:var(--gold-1);color:var(--ink-1);border:1px solid var(--gold-1);border-radius:999px;font-family:var(--font-sans);font-size:17px;font-weight:600;cursor:pointer;transition:background-color 220ms var(--ease-quick),color 220ms var(--ease-quick),transform 320ms var(--ease-out);}
+.cta__button:hover{background:var(--paper-1);color:var(--ink-1);transform:translateY(-2px);}
+.cta__button svg{transition:transform 240ms var(--ease-out);}
+.cta__button:hover svg{transform:translateX(4px);}
+
+/* ============================================
+   FOOTER — same as homepage
+   ============================================ */
+.footer{background:color-mix(in srgb,var(--ink-1) 96%,var(--gold-1));color:color-mix(in srgb,var(--paper-1) 75%,transparent);padding:clamp(56px,6vw,88px) var(--gutter) clamp(24px,3vw,36px);}
+.footer__inner{max-width:var(--max-w);margin:0 auto;}
+.footer__creds{padding-bottom:clamp(32px,4vw,48px);border-bottom:1px solid color-mix(in srgb,var(--paper-1) 14%,transparent);overflow:hidden;}
+.footer__creds-row{display:flex;align-items:center;gap:var(--space-7);white-space:nowrap;animation:marquee 60s linear infinite;width:max-content;}
+.footer__creds-row:hover{animation-play-state:paused;}
+.footer__cred{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-sans);font-size:11.5px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:color-mix(in srgb,var(--paper-1) 60%,transparent);}
+.footer__cred::after{content:"";display:inline-block;width:4px;height:4px;background:var(--gold-2);border-radius:50%;margin-left:var(--space-7);}
+.footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:clamp(28px,3vw,56px);padding:clamp(40px,5vw,64px) 0 clamp(32px,4vw,56px);}
+@media (max-width:900px){.footer__grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:600px){.footer__grid{grid-template-columns:1fr;}}
+.footer__brand img{height:36px;margin-bottom:var(--space-5);}
+.footer__tagline{font-family:var(--font-display);font-style:italic;font-size:18px;line-height:1.4;color:color-mix(in srgb,var(--paper-1) 88%,transparent);max-width:32ch;margin-bottom:var(--space-5);}
+.footer__meta{font-family:var(--font-sans);font-size:13px;line-height:1.6;color:color-mix(in srgb,var(--paper-1) 65%,transparent);}
+.footer__meta strong{color:var(--gold-1);font-weight:500;}
+.footer__col h4{font-family:var(--font-sans);font-size:11.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-1);margin-bottom:var(--space-5);}
+.footer__col ul{display:flex;flex-direction:column;gap:12px;}
+.footer__col a{font-family:var(--font-sans);font-size:14px;color:color-mix(in srgb,var(--paper-1) 78%,transparent);transition:color 200ms var(--ease-quick);}
+.footer__col a:hover{color:var(--paper-1);}
+.footer__contact-item{display:flex;align-items:center;gap:10px;}
+.footer__contact-item svg{width:14px;height:14px;color:var(--gold-2);flex-shrink:0;}
+.footer__socials{display:flex;gap:10px;margin-top:var(--space-5);}
+.footer__socials a{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid color-mix(in srgb,var(--paper-1) 16%,transparent);border-radius:50%;transition:all 200ms var(--ease-quick);}
+.footer__socials a:hover{background:var(--gold-1);border-color:var(--gold-1);color:var(--ink-1);}
+.footer__socials svg{width:16px;height:16px;}
+.footer__legal{padding-top:clamp(24px,3vw,36px);border-top:1px solid color-mix(in srgb,var(--paper-1) 14%,transparent);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-5);font-family:var(--font-sans);font-size:12px;color:color-mix(in srgb,var(--paper-1) 55%,transparent);}
+.footer__legal-links{display:flex;gap:var(--space-6);flex-wrap:wrap;}
+.footer__legal-links a{color:inherit;transition:color 200ms var(--ease-quick);}
+.footer__legal-links a:hover{color:var(--gold-1);}
+.footer__disclaimer{margin-top:var(--space-5);font-family:var(--font-sans);font-size:11px;line-height:1.6;color:color-mix(in srgb,var(--paper-1) 40%,transparent);max-width:80ch;}
+
+section{scroll-margin-top:80px;}
+</style>
+</head>
+<body>
+
+<!-- ============== NAV ============== -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="Bodagh Bookkeeping & Tax">
+      <img src="bodagh-logo.webp" alt="Bodagh Bookkeeping & Tax">
+    </a>
+    <div class="nav__links">
+      <button class="nav__close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="locations.html">Locations</a>
+      <a href="contact.html" class="is-current">Contact</a>
+      <div class="nav__drawer-foot">
+        <span class="nav__drawer-eyebrow">Ready to chat?</span>
+        <a href="#book" class="nav__drawer-cta">
+          Book a chat
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <div class="nav__drawer-contact">
+          <a href="tel:+61406344333">0406 344 333</a>
+          <a href="mailto:admin@bodagh.com.au">admin@bodagh.com.au</a>
+        </div>
+      </div>
+    </div>
+    <button class="nav__burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="nav__cta" href="#book">
+      Book a chat
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- ============== FORM + SKIP PANEL ============== -->
+<section class="form-section" id="book">
+  <header class="form-section__head">
+    <span class="eyebrow">Send a message</span>
+    <h2 class="form-section__title">
+      <em>Type the situation,</em> we'll come back to you.
+    </h2>
+    <p class="form-section__intro">
+      Short or long, formal or rambling — it doesn't matter. A real human
+      (Lara) reads everything that comes in and replies within one business
+      day. No bot, no ticket number, no "please hold." If you'd rather
+      call, email, or walk in — the other ways are below.
+    </p>
+  </header>
+
+  <div class="form-section__grid">
+
+    <form class="contact-form" id="contactForm" novalidate>
+
+      <div class="contact-form__main">
+
+        <div class="contact-form__row">
+          <div class="field">
+            <label for="cf-name">Your name</label>
+            <input type="text" id="cf-name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="cf-business">Business (optional)</label>
+            <input type="text" id="cf-business" name="business" autocomplete="organization">
+          </div>
+        </div>
+
+        <div class="contact-form__row">
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="cf-phone">Phone (optional)</label>
+            <input type="tel" id="cf-phone" name="phone" autocomplete="tel">
+            <span class="field__hint">Leave one or both — whatever's easier.</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="cf-topic">What's the situation?</label>
+          <select id="cf-topic" name="topic">
+            <option value="">Pick one (or skip — message box below works too)</option>
+            <option value="tax-return">Just need a tax return done</option>
+            <option value="bookkeeping">Looking for ongoing bookkeeping</option>
+            <option value="payroll">Payroll / STP set-up</option>
+            <option value="bas">BAS lodgement</option>
+            <option value="smsf-property">SMSF or investment property</option>
+            <option value="changing">Changing accountants — need to hand over</option>
+            <option value="not-sure">Honestly not sure — that's why I'm writing</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="cf-message">Anything else?</label>
+          <textarea id="cf-message" name="message" placeholder="One line, three paragraphs, doesn't matter."></textarea>
+        </div>
+
+        <div class="field field--checkbox">
+          <input type="checkbox" id="cf-consent" name="consent">
+          <label for="cf-consent">
+            It's fine to email me back with notes, links, or to suggest a time. <em>(We never share your details. Ever.)</em>
+          </label>
+        </div>
+
+        <div class="contact-form__submit">
+          <button type="submit" class="btn-primary">
+            Send message
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+          <span class="contact-form__note">
+            <span class="live"></span>
+            Replies typically within one business day
+          </span>
+        </div>
+
+      </div>
+
+      <div class="contact-form__success" role="alert" aria-live="polite">
+        <strong>Thanks — message away.</strong>
+        Lara has it. She'll come back to you within one business day,
+        usually quicker. Check your spam folder if you don't hear from
+        her by tomorrow afternoon.
+      </div>
+
+    </form>
+
+    <aside class="skip-panel">
+      <span class="skip-panel__eyebrow">Skip the form</span>
+      <h3 class="skip-panel__title">
+        Rather just <em>book the chat</em> directly?
+      </h3>
+      <p class="skip-panel__body">
+        If you already know you want a 30-minute chat, you can grab a time
+        in two clicks. No form, no back-and-forth — just a slot on the calendar.
+      </p>
+      <a href="#" class="skip-panel__button">
+        Book a 30-min chat
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <div class="skip-panel__signal">
+        <span class="live"></span>
+        Next available: <strong>Tue 3:30pm</strong>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<!-- ============== METHOD CARDS ============== -->
+<section class="methods" aria-label="Other ways to reach us">
+  <div class="methods__grid">
+
+    <article class="method">
+      <div class="method__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <span class="method__label">Phone</span>
+      <h3 class="method__value"><a href="tel:+61406344333">0406 344 333</a></h3>
+      <p class="method__note">
+        <strong>Fastest reply.</strong> Mon–Fri, 9 AM – 5 PM.
+        Outside hours? Text us — Lara checks at the end of the day.
+      </p>
+    </article>
+
+    <article class="method">
+      <div class="method__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <span class="method__label">Email</span>
+      <h3 class="method__value"><a href="mailto:admin@bodagh.com.au">admin@bodagh.com.au</a></h3>
+      <p class="method__note">
+        <strong>Best for documents.</strong> Send your receipts, ATO letters, or "what does this mean?"
+        screenshots — replies within one business day.
+      </p>
+    </article>
+
+    <article class="method">
+      <div class="method__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <span class="method__label">Office</span>
+      <h3 class="method__value">Craigieburn, VIC</h3>
+      <p class="method__note">
+        <strong>Walk-ins welcome</strong> Mon–Fri.
+        Free parking out front. Coffee always on. Address details below.
+      </p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== OFFICE + MAP ============== -->
+<section class="office" aria-label="Office details and map">
+  <div class="office__inner">
+
+    <div class="office__map">
+      <span class="office__map-overlay">Office</span>
+      <iframe
+        src="https://www.google.com/maps?q=Craigieburn,Victoria,Australia&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        title="Bodagh office location — Craigieburn"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
+    </div>
+
+    <div class="office__details">
+
+      <div class="office__address">
+        <h3>The Bodagh office</h3>
+        <p>
+          [Street address line 1]<br>
+          Craigieburn VIC 3064<br>
+          Australia
+        </p>
+      </div>
+
+      <div class="office__hours" aria-label="Opening hours">
+        <div class="office__hours-row"><strong>Monday</strong> 9 AM – 5 PM</div>
+        <div class="office__hours-row"><strong>Tuesday</strong> 9 AM – 5 PM</div>
+        <div class="office__hours-row"><strong>Wednesday</strong> 9 AM – 5 PM</div>
+        <div class="office__hours-row"><strong>Thursday</strong> 9 AM – 5 PM</div>
+        <div class="office__hours-row"><strong>Friday</strong> 9 AM – 5 PM</div>
+        <div class="office__hours-row is-closed"><strong>Saturday</strong> By appointment only</div>
+        <div class="office__hours-row is-closed"><strong>Sunday</strong> Closed</div>
+      </div>
+
+      <p class="office__access">
+        <strong>Getting here.</strong> Free street parking out front, accessible
+        ground-floor entry, 5-min walk from Craigieburn train station.
+        EOFY (June–July) is busiest — book ahead to skip the wait.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== FAQ ============== -->
+<section class="faq">
+  <div class="faq__inner">
+
+    <header class="faq__head">
+      <div>
+        <span class="eyebrow">Before you call</span>
+        <h2 class="faq__title">
+          A few <em>common questions.</em>
+        </h2>
+      </div>
+      <p class="faq__intro">
+        The five things people ask before they pick up the phone.
+        Skim them if you're on the fence — or just call.
+      </p>
+    </header>
+
+    <ul class="faq-list">
+
+      <li class="faq-item" data-open="false">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span class="faq__q-text">Do I have to commit to anything in the first chat?</span>
+          <span class="faq__chevron" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner"><div class="faq__a-body">
+          <p>Nothing. The 30-minute chat is free, no pitch, no paperwork. We'll ask what your situation is, you'll ask what we'd do about it, and then we'll part ways. If you decide to work with us, we'll send you an engagement letter the next day. If you don't, you've still got a clearer idea of what to ask the next accountant.</p>
+        </div></div></div>
+      </li>
+
+      <li class="faq-item" data-open="false">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span class="faq__q-text">Can you take over from my existing accountant?</span>
+          <span class="faq__chevron" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner"><div class="faq__a-body">
+          <p>Yes — and we handle the handover directly. You sign one form, we email them, they send over your file. You don't have to have the awkward conversation.</p>
+          <p>Most handovers take about a week. We'll loop you in if there's anything that needs your input.</p>
+        </div></div></div>
+      </li>
+
+      <li class="faq-item" data-open="false">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span class="faq__q-text">What if I'm not sure what service I need?</span>
+          <span class="faq__chevron" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner"><div class="faq__a-body">
+          <p>That's literally what the chat is for. Most people who book don't actually know — they just know something's not right, or that EOFY is creeping up, or that they've been doing it themselves and the numbers stopped lining up. Half the chat is us figuring out what you actually need, the other half is telling you what we'd do about it.</p>
+        </div></div></div>
+      </li>
+
+      <li class="faq-item" data-open="false">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span class="faq__q-text">Do I have to come to the Craigieburn office?</span>
+          <span class="faq__chevron" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner"><div class="faq__a-body">
+          <p>No. About half of clients work with us entirely online — Zoom, email, secure document upload. The other half drop in. Whichever suits.</p>
+          <p>If you're local (Craigieburn, Roxburgh Park, Greenvale, Mickleham, Donnybrook) and want to walk in, the door's open Mon–Fri.</p>
+        </div></div></div>
+      </li>
+
+      <li class="faq-item" data-open="false">
+        <button class="faq__q" type="button" aria-expanded="false">
+          <span class="faq__q-text">What software do you use?</span>
+          <span class="faq__chevron" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner"><div class="faq__a-body">
+          <p>Whichever suits your business. We're certified in Xero, MYOB, and QuickBooks Online, and we have no preference — we'll recommend the one that fits how you actually work, not the one that pays us a commission.</p>
+          <p>Already on something? We can usually keep going with it. If it's truly painful, we'll tell you that too.</p>
+        </div></div></div>
+      </li>
+
+    </ul>
+
+  </div>
+</section>
+
+<!-- ============== FINAL CTA ============== -->
+<section class="cta">
+  <div class="cta__inner">
+    <span class="cta__eyebrow">One last nudge</span>
+    <h2 class="cta__title">
+      Still scrolling? <em>Just book the chat.</em>
+    </h2>
+    <p class="cta__subhead">
+      30 minutes. Free. No paperwork. You'll know more about your numbers
+      by the end of it than you did this morning.
+    </p>
+    <a href="#book" class="cta__button">
+      Book your 30-min chat
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="footer">
+  <div class="footer__inner">
+
+    <div class="footer__creds">
+      <div class="footer__creds-row">
+        <span class="footer__cred">ATO Registered Tax Agent</span>
+        <span class="footer__cred">BAS Agent</span>
+        <span class="footer__cred">Xero Certified Advisor</span>
+        <span class="footer__cred">MYOB Partner</span>
+        <span class="footer__cred">QuickBooks ProAdvisor</span>
+        <span class="footer__cred">TPB Registered</span>
+        <span class="footer__cred">ABN XX XXX XXX XXX</span>
+        <span class="footer__cred">ATO Registered Tax Agent</span>
+        <span class="footer__cred">BAS Agent</span>
+        <span class="footer__cred">Xero Certified Advisor</span>
+        <span class="footer__cred">MYOB Partner</span>
+        <span class="footer__cred">QuickBooks ProAdvisor</span>
+        <span class="footer__cred">TPB Registered</span>
+        <span class="footer__cred">ABN XX XXX XXX XXX</span>
+      </div>
+    </div>
+
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="bodagh-logo.webp" alt="Bodagh Bookkeeping & Tax">
+        <p class="footer__tagline">Plain-English tax &amp; bookkeeping for Northern Melbourne.</p>
+        <p class="footer__meta">
+          <strong>Registered Tax Agent #XXXXX</strong><br>
+          ABN XX XXX XXX XXX<br>
+          Operated by Lara Bodagh
+        </p>
+        <div class="footer__socials">
+          <a href="https://www.facebook.com/people/Bodagh-Bookkeeping-Tax/61582640077445/" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.197 21.728v-7.413H6.61V11.31h2.587V8.92c0-2.62 1.616-4.05 3.954-4.05 1.12 0 2.082.084 2.362.121v2.74h-1.622c-1.27 0-1.516.603-1.516 1.49v1.953h3.034l-.395 3.005h-2.64v7.55"/></svg>
+          </a>
+          <a href="https://www.instagram.com/p/DQMEwCvD01L/" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Lara</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="locations.html">Locations</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#bookkeeping">Bookkeeping</a></li>
+          <li><a href="services.html#taxation">Taxation</a></li>
+          <li><a href="services.html#payroll">Payroll &amp; Compliance</a></li>
+          <li><a href="services.html#advisory">Business Advisory</a></li>
+          <li><a href="services.html#smsf">SMSF &amp; Property</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Get in touch</h4>
+        <ul>
+          <li class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:+61406344333">0406 344 333</a>
+          </li>
+          <li class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:admin@bodagh.com.au">admin@bodagh.com.au</a>
+          </li>
+          <li class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+            9 AM – 5 PM, Mon – Fri
+          </li>
+          <li class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Craigieburn, VIC
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__legal">
+      <div class="footer__legal-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Disclaimer</a>
+        <a href="#">Cookies</a>
+      </div>
+      <div class="footer__copyright">
+        © 2019 – <span id="year">2026</span> Bodagh Bookkeeping &amp; Tax · All rights reserved
+      </div>
+    </div>
+
+    <p class="footer__disclaimer">
+      Liability limited by a scheme approved under Professional Standards Legislation (if applicable — see OWNER-CONFIRMATIONS #24).
+      Information on this site is general; for personal advice book a chat. Bodagh Bookkeeping &amp; Tax is a registered business in Victoria, Australia.
+    </p>
+
+  </div>
+</footer>
+
+<script>
+  // Sticky nav border
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+  const burger = document.querySelector('.nav__burger');
+  const closeBtn = document.querySelector('.nav__close');
+  if (burger) {
+    const backdrop = document.createElement('div');
+    backdrop.className = 'nav__backdrop';
+    document.body.appendChild(backdrop);
+    const openMenu = () => { nav.classList.add('menu-open'); burger.setAttribute('aria-expanded','true'); backdrop.classList.add('is-open'); document.body.style.overflow='hidden'; };
+    const closeMenu = () => { nav.classList.remove('menu-open'); burger.setAttribute('aria-expanded','false'); backdrop.classList.remove('is-open'); document.body.style.overflow=''; };
+    burger.addEventListener('click', () => nav.classList.contains('menu-open') ? closeMenu() : openMenu());
+    closeBtn?.addEventListener('click', closeMenu);
+    backdrop.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && nav.classList.contains('menu-open')) closeMenu(); });
+    document.querySelectorAll('.nav__links a').forEach(a => a.addEventListener('click', closeMenu));
+  }
+
+  // FAQ accordion — single-open, class-driven (same pattern as services accordion)
+  document.querySelectorAll('.faq__q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.dataset.open === 'true';
+      document.querySelectorAll('.faq-item').forEach(f => {
+        f.dataset.open = 'false';
+        const b = f.querySelector('.faq__q');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.dataset.open = 'true';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Form submit — preview only, swaps to success state
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = form.querySelector('#cf-name').value.trim();
+      const email = form.querySelector('#cf-email').value.trim();
+      if (!name || !email) {
+        alert("We'd love to know your name and email so we can reply. The rest is optional.");
+        return;
+      }
+      form.classList.add('is-submitted');
+      window.scrollTo({ top: form.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' });
+    });
+  }
+
+  // Footer year
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

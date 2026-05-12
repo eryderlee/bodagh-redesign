@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About Lara · Bodagh Bookkeeping &amp; Tax</title>
+<meta name="description" content="Meet Lara — the human behind Bodagh Bookkeeping & Tax. Plain-English accounting for sole traders, tradies, and small businesses across Northern Melbourne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink-1:#111;--ink-2:#2A2A2D;--ink-3:#5E5E62;--paper-1:#F8F4EA;--paper-2:#EFE7D2;--paper-3:#E1D5B5;--gold-1:#C1B596;--gold-2:#A89272;--gold-3:#D9CFB5;--font-display:"Fraunces",Georgia,serif;--font-sans:"Inter",-apple-system,system-ui,sans-serif;--fs-eyebrow:clamp(11px,0.7vw + 9px,13px);--fs-body:clamp(15px,0.4vw + 14px,17px);--fs-lead:clamp(18px,0.6vw + 16px,22px);--fs-h3:clamp(26px,1.6vw + 22px,38px);--fs-h2:clamp(36px,3vw + 24px,64px);--fs-h1:clamp(40px,4.5vw + 28px,80px);--space-4:16px;--space-5:24px;--space-6:32px;--space-7:48px;--space-8:64px;--space-9:96px;--section-y:clamp(80px,9vw,144px);--gutter:clamp(20px,4vw,40px);--max-w:1320px;--ease-out:cubic-bezier(0.22,1,0.36,1);--ease-quick:cubic-bezier(0.32,0.72,0,1);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth;}
+body{background:var(--paper-1);color:var(--ink-1);font-family:var(--font-sans);font-size:var(--fs-body);line-height:1.55;}
+a{color:inherit;text-decoration:none;}img,svg{display:block;max-width:100%;}ul{list-style:none;}button{font-family:inherit;cursor:pointer;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+.eyebrow{font-family:var(--font-sans);font-size:var(--fs-eyebrow);font-weight:500;text-transform:uppercase;letter-spacing:0.16em;color:var(--gold-2);display:inline-flex;align-items:center;gap:12px;}
+.eyebrow::before{content:"";width:24px;height:1px;background:currentColor;}
+.link-quiet{display:inline-flex;align-items:center;gap:6px;font-size:15px;color:var(--ink-2);font-weight:500;position:relative;padding:6px 0;}
+.link-quiet::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--ink-2);transform-origin:0 50%;transform:scaleX(0);transition:transform 220ms var(--ease-quick),background-color 220ms var(--ease-quick);}
+.link-quiet:hover{color:var(--ink-1);}.link-quiet:hover::after{transform:scaleX(1);background:var(--gold-2);}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:18px 32px;background:var(--ink-1);color:var(--paper-1);border:1px solid var(--ink-1);border-radius:999px;font-size:16px;font-weight:500;cursor:pointer;transition:all 220ms var(--ease-quick);}
+.btn-primary:hover{background:var(--gold-1);color:var(--ink-1);border-color:var(--gold-1);}
+.btn-primary svg{transition:transform 240ms var(--ease-out);}.btn-primary:hover svg{transform:translateX(4px);}
+
+.nav{position:sticky;top:0;z-index:50;background:var(--ink-1);border-bottom:1px solid transparent;transition:border-color 240ms var(--ease-quick);}
+.nav.scrolled{border-color:color-mix(in srgb,var(--gold-1) 35%,transparent);}
+.nav__inner{max-width:var(--max-w);margin:0 auto;padding:14px var(--gutter);display:flex;align-items:center;gap:var(--space-7);}
+.brand img{height:40px;}
+.nav__links{display:flex;gap:var(--space-6);margin-left:auto;font-size:15px;font-weight:500;}
+.nav__links a{position:relative;padding:4px 0;color:color-mix(in srgb,var(--paper-1) 78%,transparent);transition:color 200ms var(--ease-quick);}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1.5px;background:var(--gold-1);transform-origin:0 50%;transform:scaleX(0);transition:transform 220ms var(--ease-quick);}
+.nav__links a:hover{color:var(--paper-1);}.nav__links a:hover::after{transform:scaleX(1);}
+.nav__links a.is-current{color:var(--paper-1);}.nav__links a.is-current::after{transform:scaleX(1);}
+.nav__cta{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;background:var(--gold-1);color:var(--ink-1);border-radius:999px;font-size:14px;font-weight:500;border:1px solid var(--gold-1);transition:all 200ms var(--ease-quick);}
+.nav__cta:hover{background:var(--paper-1);color:var(--ink-1);border-color:var(--paper-1);}
+.nav__burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;padding:4px;background:transparent;border:none;cursor:pointer;flex-shrink:0;}
+.nav__burger span{display:block;width:22px;height:2px;background:var(--paper-1);border-radius:2px;transition:transform 280ms,opacity 200ms;}
+.nav.menu-open .nav__burger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav.menu-open .nav__burger span:nth-child(2){opacity:0;}
+.nav.menu-open .nav__burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav__close,.nav__drawer-foot{display:none;}
+.nav__backdrop{position:fixed;inset:0;background:color-mix(in srgb,#000 55%,transparent);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:49;opacity:0;pointer-events:none;transition:opacity 320ms var(--ease-out);}
+.nav__backdrop.is-open{opacity:1;pointer-events:auto;}
+@media (min-width:901px){.nav__backdrop{display:none;}}
+@media (max-width:900px){
+  .nav__inner{gap:12px;}
+  .nav__cta{display:none;}
+  .nav__burger{display:flex;margin-left:auto;}
+  .brand img{height:32px;}
+  .nav__links{flex-direction:column;position:fixed;top:0;right:0;bottom:0;width:min(380px,88vw);z-index:51;background:var(--ink-1);margin-left:0;padding:0;overflow-y:auto;overflow-x:hidden;align-items:stretch;gap:0;transform:translateX(100%);transition:transform 380ms var(--ease-out);box-shadow:-24px 0 60px -16px rgba(0,0,0,0.5);}
+  .nav.menu-open .nav__links{transform:translateX(0);}
+  .nav__close{display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin:18px 16px 4px auto;background:transparent;border:1px solid color-mix(in srgb,var(--paper-1) 14%,transparent);border-radius:50%;color:var(--paper-1);cursor:pointer;flex-shrink:0;transition:background-color 200ms,border-color 200ms;}
+  .nav__close:hover{background:color-mix(in srgb,var(--paper-1) 6%,transparent);border-color:color-mix(in srgb,var(--gold-1) 45%,transparent);}
+  .nav__close svg{width:18px;height:18px;}
+  .nav__links a{font-family:var(--font-display);font-size:28px;font-weight:500;color:var(--paper-1);padding:14px 28px;border-top:1px solid color-mix(in srgb,var(--paper-1) 7%,transparent);transition:color 200ms,background-color 200ms;}
+  .nav__links a:first-of-type{margin-top:8px;}
+  .nav__links a:hover{background:color-mix(in srgb,var(--gold-1) 8%,transparent);color:var(--gold-1);}
+  .nav__links a.is-current{color:var(--gold-1);}
+  .nav__links a::after{display:none;}
+  .nav__drawer-foot{display:flex;flex-direction:column;gap:14px;margin-top:auto;padding:24px 28px 28px;border-top:1px solid color-mix(in srgb,var(--paper-1) 10%,transparent);}
+  .nav__drawer-eyebrow{font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-2);display:inline-flex;align-items:center;gap:10px;}
+  .nav__drawer-eyebrow::before{content:"";width:20px;height:1px;background:currentColor;}
+  .nav__drawer-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:16px 24px;background:var(--gold-1);color:var(--ink-1);border:1px solid var(--gold-1);border-radius:999px;font-family:var(--font-sans);font-size:15px;font-weight:600;transition:background-color 200ms,color 200ms,border-color 200ms;}
+  .nav__drawer-cta:hover{background:var(--paper-1);border-color:var(--paper-1);}
+  .nav__drawer-cta::after{display:none;}
+  .nav__drawer-contact{display:flex;flex-direction:column;gap:4px;margin-top:6px;font-family:var(--font-sans);font-size:13px;color:color-mix(in srgb,var(--paper-1) 55%,transparent);}
+  .nav__drawer-contact a{font-family:var(--font-sans);font-size:14px;font-weight:500;color:var(--paper-1);padding:0;border:none;margin:0;}
+  .nav__drawer-contact a:hover{background:transparent;color:var(--gold-1);}
+}
+
+/* ============ HERO ============ */
+.about-hero{padding:clamp(80px,8vw,140px) var(--gutter) clamp(40px,5vw,72px);max-width:var(--max-w);margin:0 auto;}
+.about-hero__grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,5vw,88px);align-items:center;}
+@media (max-width:900px){.about-hero__grid{grid-template-columns:1fr;}}
+.about-hero__title{font-family:var(--font-display);font-size:var(--fs-h1);line-height:0.96;letter-spacing:-0.025em;font-weight:500;color:var(--ink-1);margin-top:var(--space-6);max-width:14ch;}
+.about-hero__title em{font-style:italic;font-weight:400;color:var(--gold-2);}
+.about-hero__subhead{font-family:var(--font-sans);font-size:var(--fs-lead);line-height:1.5;color:var(--ink-2);margin-top:var(--space-6);max-width:46ch;}
+.about-hero__visual{display:flex;justify-content:center;}
+.photo-card{position:relative;width:100%;max-width:440px;aspect-ratio:5/6;background:radial-gradient(120% 80% at 30% 0%,color-mix(in srgb,var(--gold-1) 18%,var(--paper-2)) 0%,var(--paper-2) 60%),var(--paper-2);border-radius:14px;overflow:hidden;isolation:isolate;box-shadow:0 1px 0 color-mix(in srgb,var(--ink-1) 8%,transparent) inset,0 30px 60px -30px color-mix(in srgb,var(--ink-1) 22%,transparent);}
+.photo-card::before{content:"";position:absolute;inset:14px;border:1px solid color-mix(in srgb,var(--gold-2) 55%,transparent);border-radius:6px;pointer-events:none;z-index:5;}
+.photo-card__label{position:absolute;top:26px;left:26px;padding:6px 10px;background:color-mix(in srgb,var(--ink-1) 88%,transparent);color:var(--gold-1);border-radius:999px;font-family:var(--font-sans);font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;z-index:4;}
+.photo-card__svg{position:absolute;inset:14px;width:calc(100% - 28px);height:calc(100% - 28px);color:var(--gold-2);opacity:0.55;}
+.photo-card__caption{position:absolute;left:30px;right:30px;bottom:26px;font-family:var(--font-display);font-style:italic;font-size:19px;color:var(--ink-1);z-index:4;}
+.photo-card__caption span{display:block;font-family:var(--font-sans);font-style:normal;font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;}
+
+/* ============ STORY ============ */
+.story{padding:clamp(40px,5vw,72px) var(--gutter) var(--section-y);max-width:var(--max-w);margin:0 auto;}
+.story__inner{max-width:760px;margin:0 auto;}
+.story h2{font-family:var(--font-display);font-style:italic;font-size:var(--fs-h2);line-height:1.05;letter-spacing:-0.022em;font-weight:500;color:var(--ink-1);margin-top:var(--space-7);}
+.story h2:first-child{margin-top:0;}
+.story p{font-family:var(--font-sans);font-size:18px;line-height:1.7;color:var(--ink-2);margin-top:var(--space-5);max-width:64ch;}
+.story p.lead{font-family:var(--font-display);font-style:italic;font-size:24px;line-height:1.5;color:var(--ink-1);max-width:36ch;margin-bottom:var(--space-7);}
+.story .pull{padding-left:24px;border-left:3px solid var(--gold-1);font-family:var(--font-display);font-style:italic;font-size:22px;line-height:1.5;color:var(--ink-1);margin:var(--space-7) 0;max-width:42ch;}
+
+/* ============ CREDENTIALS ============ */
+.credentials-section{background:var(--paper-2);border-top:1px solid color-mix(in srgb,var(--ink-1) 7%,transparent);border-bottom:1px solid color-mix(in srgb,var(--ink-1) 7%,transparent);padding:var(--section-y) var(--gutter);}
+.credentials-section__inner{max-width:var(--max-w);margin:0 auto;}
+.credentials-section__head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,5vw,88px);align-items:end;margin-bottom:clamp(48px,6vw,80px);}
+@media (max-width:900px){.credentials-section__head{grid-template-columns:1fr;align-items:start;}}
+.credentials-section__title{font-family:var(--font-display);font-size:var(--fs-h1);line-height:0.96;letter-spacing:-0.025em;font-weight:500;margin-top:var(--space-6);color:var(--ink-1);}
+.credentials-section__title em{font-style:italic;font-weight:400;color:var(--gold-2);}
+.credentials-section__intro{font-family:var(--font-sans);font-size:var(--fs-lead);line-height:1.5;color:var(--ink-2);max-width:48ch;}
+.creds-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2vw,28px);}
+@media (max-width:900px){.creds-grid{grid-template-columns:1fr;}}
+.cred-card{padding:clamp(24px,2.5vw,32px);background:var(--paper-1);border:1px solid color-mix(in srgb,var(--ink-1) 8%,transparent);border-radius:18px;display:flex;flex-direction:column;gap:12px;}
+.cred-card__num{font-family:var(--font-display);font-style:italic;font-size:28px;font-weight:500;color:var(--gold-2);line-height:1;}
+.cred-card__name{font-family:var(--font-display);font-size:22px;font-weight:500;letter-spacing:-0.012em;color:var(--ink-1);line-height:1.2;}
+.cred-card__detail{font-family:var(--font-sans);font-size:14px;line-height:1.55;color:var(--ink-3);}
+.cred-card__detail strong{color:var(--ink-2);font-weight:600;}
+
+/* ============ VALUES ============ */
+.values{padding:var(--section-y) var(--gutter);max-width:var(--max-w);margin:0 auto;}
+.values__head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,5vw,88px);align-items:end;margin-bottom:clamp(48px,6vw,80px);}
+@media (max-width:900px){.values__head{grid-template-columns:1fr;align-items:start;}}
+.values__title{font-family:var(--font-display);font-size:var(--fs-h1);line-height:0.96;letter-spacing:-0.025em;font-weight:500;margin-top:var(--space-6);color:var(--ink-1);}
+.values__title em{font-style:italic;font-weight:400;color:var(--gold-2);}
+.values__intro{font-family:var(--font-sans);font-size:var(--fs-lead);line-height:1.5;color:var(--ink-2);max-width:48ch;}
+.values-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,2.5vw,40px);}
+@media (max-width:900px){.values-list{grid-template-columns:1fr;}}
+.value-item{padding:clamp(28px,3vw,36px) 0;border-top:1px solid color-mix(in srgb,var(--ink-1) 12%,transparent);}
+.value-item__num{font-family:var(--font-display);font-style:italic;font-size:24px;color:var(--gold-2);font-weight:500;line-height:1;margin-bottom:12px;}
+.value-item__name{font-family:var(--font-display);font-size:var(--fs-h3);font-weight:500;letter-spacing:-0.018em;color:var(--ink-1);margin-bottom:14px;line-height:1.15;}
+.value-item__desc{font-family:var(--font-sans);font-size:16px;line-height:1.6;color:var(--ink-2);max-width:42ch;}
+
+/* ============ CTA ============ */
+.cta{background:var(--ink-1);color:var(--paper-1);padding:var(--section-y) var(--gutter);position:relative;overflow:hidden;}
+.cta__inner{max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:2;}
+.cta::before{content:"";position:absolute;top:-20%;right:-10%;width:60%;height:140%;background:radial-gradient(50% 50% at 50% 50%,color-mix(in srgb,var(--gold-2) 14%,transparent) 0%,transparent 70%);pointer-events:none;}
+.cta__eyebrow{font-family:var(--font-sans);font-size:var(--fs-eyebrow);font-weight:500;text-transform:uppercase;letter-spacing:0.18em;color:var(--gold-1);display:inline-flex;align-items:center;gap:12px;}
+.cta__eyebrow::before,.cta__eyebrow::after{content:"";width:32px;height:1px;background:currentColor;}
+.cta__title{font-family:var(--font-display);font-size:clamp(40px,4.5vw + 20px,96px);line-height:0.94;letter-spacing:-0.03em;font-weight:500;color:var(--paper-1);margin:var(--space-6) auto;max-width:20ch;}
+.cta__title em{font-style:italic;font-weight:400;color:var(--gold-1);}
+.cta__subhead{font-family:var(--font-sans);font-size:var(--fs-lead);line-height:1.5;color:var(--gold-3);max-width:52ch;margin:0 auto var(--space-8);}
+.cta__button{display:inline-flex;align-items:center;gap:12px;padding:22px 40px;background:var(--gold-1);color:var(--ink-1);border:1px solid var(--gold-1);border-radius:999px;font-size:17px;font-weight:600;transition:all 320ms var(--ease-out);}
+.cta__button:hover{background:var(--paper-1);transform:translateY(-2px);}
+.cta__button svg{transition:transform 240ms var(--ease-out);}.cta__button:hover svg{transform:translateX(4px);}
+
+/* ============ FOOTER ============ */
+.footer{background:color-mix(in srgb,var(--ink-1) 96%,var(--gold-1));color:color-mix(in srgb,var(--paper-1) 75%,transparent);padding:clamp(56px,6vw,88px) var(--gutter) clamp(24px,3vw,36px);}
+.footer__inner{max-width:var(--max-w);margin:0 auto;}
+.footer__creds{padding-bottom:clamp(32px,4vw,48px);border-bottom:1px solid color-mix(in srgb,var(--paper-1) 14%,transparent);overflow:hidden;}
+.footer__creds-row{display:flex;align-items:center;gap:var(--space-7);white-space:nowrap;animation:marquee 60s linear infinite;width:max-content;}
+.footer__creds-row:hover{animation-play-state:paused;}
+.footer__cred{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-sans);font-size:11.5px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:color-mix(in srgb,var(--paper-1) 60%,transparent);}
+.footer__cred::after{content:"";display:inline-block;width:4px;height:4px;background:var(--gold-2);border-radius:50%;margin-left:var(--space-7);}
+.footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:clamp(28px,3vw,56px);padding:clamp(40px,5vw,64px) 0 clamp(32px,4vw,56px);}
+@media (max-width:900px){.footer__grid{grid-template-columns:1fr 1fr;}}@media (max-width:600px){.footer__grid{grid-template-columns:1fr;}}
+.footer__brand img{height:36px;margin-bottom:var(--space-5);}
+.footer__tagline{font-family:var(--font-display);font-style:italic;font-size:18px;line-height:1.4;color:color-mix(in srgb,var(--paper-1) 88%,transparent);max-width:32ch;margin-bottom:var(--space-5);}
+.footer__meta{font-family:var(--font-sans);font-size:13px;line-height:1.6;color:color-mix(in srgb,var(--paper-1) 65%,transparent);}
+.footer__meta strong{color:var(--gold-1);font-weight:500;}
+.footer__col h4{font-family:var(--font-sans);font-size:11.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-1);margin-bottom:var(--space-5);}
+.footer__col ul{display:flex;flex-direction:column;gap:12px;}
+.footer__col a{font-family:var(--font-sans);font-size:14px;color:color-mix(in srgb,var(--paper-1) 78%,transparent);transition:color 200ms var(--ease-quick);}
+.footer__col a:hover{color:var(--paper-1);}
+.footer__contact-item{display:flex;align-items:center;gap:10px;}
+.footer__contact-item svg{width:14px;height:14px;color:var(--gold-2);flex-shrink:0;}
+.footer__socials{display:flex;gap:10px;margin-top:var(--space-5);}
+.footer__socials a{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid color-mix(in srgb,var(--paper-1) 16%,transparent);border-radius:50%;transition:all 200ms var(--ease-quick);}
+.footer__socials a:hover{background:var(--gold-1);border-color:var(--gold-1);color:var(--ink-1);}
+.footer__socials svg{width:16px;height:16px;}
+.footer__legal{padding-top:clamp(24px,3vw,36px);border-top:1px solid color-mix(in srgb,var(--paper-1) 14%,transparent);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-5);font-family:var(--font-sans);font-size:12px;color:color-mix(in srgb,var(--paper-1) 55%,transparent);}
+.footer__legal-links{display:flex;gap:var(--space-6);flex-wrap:wrap;}
+.footer__legal-links a{color:inherit;transition:color 200ms var(--ease-quick);}
+.footer__legal-links a:hover{color:var(--gold-1);}
+.footer__disclaimer{margin-top:var(--space-5);font-family:var(--font-sans);font-size:11px;line-height:1.6;color:color-mix(in srgb,var(--paper-1) 40%,transparent);max-width:80ch;}
+section{scroll-margin-top:80px;}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="Bodagh Bookkeeping & Tax">
+      <img src="bodagh-logo.webp" alt="Bodagh Bookkeeping & Tax">
+    </a>
+    <div class="nav__links">
+      <button class="nav__close" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html" class="is-current">About</a>
+      <a href="locations.html">Locations</a>
+      <a href="contact.html">Contact</a>
+      <div class="nav__drawer-foot">
+        <span class="nav__drawer-eyebrow">Ready to chat?</span>
+        <a href="contact.html#book" class="nav__drawer-cta">
+          Book a chat
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <div class="nav__drawer-contact">
+          <a href="tel:+61406344333">0406 344 333</a>
+          <a href="mailto:admin@bodagh.com.au">admin@bodagh.com.au</a>
+        </div>
+      </div>
+    </div>
+    <button class="nav__burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="nav__cta" href="contact.html#book">
+      Book a chat
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- ============== HERO ============== -->
+<section class="about-hero">
+  <div class="about-hero__grid">
+    <div>
+      <span class="eyebrow">About</span>
+      <h1 class="about-hero__title">
+        Hi, I'm <em>Lara.</em>
+      </h1>
+      <p class="about-hero__subhead">
+        I started Bodagh because most accountants make tax sound like
+        a foreign language. I do the opposite — explain what's going on
+        with your numbers in normal English, in the time it takes to
+        drink a coffee.
+      </p>
+    </div>
+    <div class="about-hero__visual">
+      <figure class="photo-card" aria-label="Photo of Lara — placeholder">
+        <span class="photo-card__label">Photo · placeholder</span>
+        <svg class="photo-card__svg" viewBox="0 0 400 480" fill="none" aria-hidden="true">
+          <g stroke="currentColor" stroke-width="1" opacity="0.55">
+            <line x1="60" y1="170" x2="340" y2="170"/>
+            <line x1="60" y1="190" x2="320" y2="190"/>
+            <line x1="60" y1="210" x2="300" y2="210"/>
+            <line x1="60" y1="230" x2="340" y2="230"/>
+            <line x1="60" y1="250" x2="260" y2="250"/>
+          </g>
+          <rect x="60" y="135" width="280" height="140" stroke="currentColor" stroke-width="1.4" rx="2"/>
+          <g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none">
+            <line x1="80" y1="360" x2="240" y2="390"/>
+            <line x1="234" y1="388" x2="260" y2="398" stroke-width="1.5"/>
+          </g>
+          <g transform="translate(290, 90)" stroke="currentColor" stroke-width="1.4">
+            <path d="M0 30 V0 H10 Q22 0 22 8 Q22 14 18 16 Q24 18 24 24 Q24 30 14 30 Z" fill="none"/>
+          </g>
+        </svg>
+        <figcaption class="photo-card__caption">
+          Lara · Craigieburn
+          <span>Photo to come</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============== STORY ============== -->
+<section class="story">
+  <div class="story__inner">
+    <p class="lead">
+      Bookkeeping is one of those things that feels obvious once
+      someone explains it properly — and impossible until then.
+    </p>
+
+    <h2>Why Bodagh</h2>
+    <p>
+      Most small-business owners I meet don't actually want to "learn
+      accounting." They want someone to handle the BAS, file the return,
+      keep the ATO off their back, and once a month tell them — in
+      English — whether the business is making money.
+    </p>
+    <p>
+      I started Bodagh because the firms I'd worked at before didn't
+      really do that. They'd send you a 40-page report with a
+      cover letter saying "Please find attached," and you'd file it
+      without reading it.
+    </p>
+
+    <p class="pull">
+      "If I have to ask three follow-up questions just to understand my
+      own numbers, the report isn't doing its job."
+    </p>
+
+    <h2>How I work</h2>
+    <p>
+      I keep a small client list on purpose. Most are sole traders,
+      tradies, small cafés and retail, and a handful of growing
+      companies across Craigieburn, Roxburgh Park, Greenvale, Mickleham
+      and Donnybrook. Some prefer in-person, some prefer everything by email —
+      whichever fits.
+    </p>
+    <p>
+      Software-wise I'm certified in Xero, MYOB, and QuickBooks Online,
+      and I have no commission deal with any of them — so the
+      recommendation you'll get is genuinely the one that suits how you work.
+    </p>
+
+    <h2>Outside of work</h2>
+    <p>
+      Bodagh is a one-person practice (so far). When I'm not here I'm
+      usually walking around Craigieburn, helping out at the local
+      football club, or trying to convince my partner that a new piece
+      of office stationery is, in fact, a "tax deduction."
+    </p>
+    <p>
+      If any of that sounds like the kind of person you'd want handling
+      your numbers — let's book a chat.
+    </p>
+  </div>
+</section>
+
+<!-- ============== CREDENTIALS ============== -->
+<section class="credentials-section">
+  <div class="credentials-section__inner">
+
+    <header class="credentials-section__head">
+      <div>
+        <span class="eyebrow">Credentials</span>
+        <h2 class="credentials-section__title">
+          The boring <em>but important</em> bit.
+        </h2>
+      </div>
+      <p class="credentials-section__intro">
+        Every claim below is verifiable on the relevant regulator's website.
+        Numbers visible to confirm by hover — they're not decorative.
+      </p>
+    </header>
+
+    <div class="creds-grid">
+
+      <article class="cred-card">
+        <span class="cred-card__num">01</span>
+        <h3 class="cred-card__name">Registered Tax Agent</h3>
+        <p class="cred-card__detail">
+          <strong>TPB #XXXXX</strong><br>
+          Authorised by the Tax Practitioners Board to lodge tax returns
+          on behalf of individuals and businesses. Verify at <em>tpb.gov.au</em>.
+        </p>
+      </article>
+
+      <article class="cred-card">
+        <span class="cred-card__num">02</span>
+        <h3 class="cred-card__name">BAS Agent</h3>
+        <p class="cred-card__detail">
+          <strong>BAS Agent #XXXXX</strong><br>
+          Authorised to prepare and lodge BAS, IAS, and PAYG withholding
+          on behalf of clients. Required by law for paid lodgement.
+        </p>
+      </article>
+
+      <article class="cred-card">
+        <span class="cred-card__num">03</span>
+        <h3 class="cred-card__name">Xero Certified Advisor</h3>
+        <p class="cred-card__detail">
+          Advanced-level certification in Xero Practice setup, payroll,
+          and reporting. Updated annually. We also certify in MYOB and
+          QuickBooks Online.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== VALUES ============== -->
+<section class="values">
+  <header class="values__head">
+    <div>
+      <span class="eyebrow">How we work</span>
+      <h2 class="values__title">
+        Four things <em>we won't do.</em>
+      </h2>
+    </div>
+    <p class="values__intro">
+      Plenty of accountants tell you what they will do. These are the
+      things we promise <em>not</em> to — because they're the things that
+      tend to put people off.
+    </p>
+  </header>
+
+  <div class="values-list">
+
+    <article class="value-item">
+      <div class="value-item__num">01</div>
+      <h3 class="value-item__name">No jargon without translation.</h3>
+      <p class="value-item__desc">
+        If we have to use a term like "CGT discount" or "STP Phase 2,"
+        we'll explain what it actually means for your wallet — not just
+        what it means on paper. If we forget, ask.
+      </p>
+    </article>
+
+    <article class="value-item">
+      <div class="value-item__num">02</div>
+      <h3 class="value-item__name">No surprise invoices.</h3>
+      <p class="value-item__desc">
+        Your monthly fee is what we agreed at the start. If your situation
+        changes (more transactions, new entity, big project), we'll tell
+        you before the next invoice — not after.
+      </p>
+    </article>
+
+    <article class="value-item">
+      <div class="value-item__num">03</div>
+      <h3 class="value-item__name">No "let me get back to you next week."</h3>
+      <p class="value-item__desc">
+        Same-day replies during business hours, one-business-day reply
+        outside of them. We keep the client list small so this stays
+        actually true.
+      </p>
+    </article>
+
+    <article class="value-item">
+      <div class="value-item__num">04</div>
+      <h3 class="value-item__name">No selling you software you don't need.</h3>
+      <p class="value-item__desc">
+        We have no commission relationship with Xero, MYOB, or QuickBooks.
+        The one we recommend is the one that fits how you work — not
+        the one that pays us.
+      </p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== CTA ============== -->
+<section class="cta">
+  <div class="cta__inner">
+    <span class="cta__eyebrow">Let's start</span>
+    <h2 class="cta__title">Want a <em>plain-English</em> accountant?</h2>
+    <p class="cta__subhead">
+      Book a 30-minute chat. It's free, no paperwork, no pitch.
+      You'll know whether we're the right fit by the end of it.
+    </p>
+    <a href="contact.html#book" class="cta__button">
+      Book your 30-min chat
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__creds">
+      <div class="footer__creds-row">
+        <span class="footer__cred">ATO Registered Tax Agent</span>
+        <span class="footer__cred">BAS Agent</span>
+        <span class="footer__cred">Xero Certified Advisor</span>
+        <span class="footer__cred">MYOB Partner</span>
+        <span class="footer__cred">QuickBooks ProAdvisor</span>
+        <span class="footer__cred">TPB Registered</span>
+        <span class="footer__cred">ABN XX XXX XXX XXX</span>
+        <span class="footer__cred">ATO Registered Tax Agent</span>
+        <span class="footer__cred">BAS Agent</span>
+        <span class="footer__cred">Xero Certified Advisor</span>
+        <span class="footer__cred">MYOB Partner</span>
+        <span class="footer__cred">QuickBooks ProAdvisor</span>
+        <span class="footer__cred">TPB Registered</span>
+        <span class="footer__cred">ABN XX XXX XXX XXX</span>
+      </div>
+    </div>
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="bodagh-logo.webp" alt="Bodagh Bookkeeping & Tax">
+        <p class="footer__tagline">Plain-English tax &amp; bookkeeping for Northern Melbourne.</p>
+        <p class="footer__meta"><strong>Registered Tax Agent #XXXXX</strong><br>ABN XX XXX XXX XXX<br>Operated by Lara Bodagh</p>
+        <div class="footer__socials">
+          <a href="https://www.facebook.com/people/Bodagh-Bookkeeping-Tax/61582640077445/" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.197 21.728v-7.413H6.61V11.31h2.587V8.92c0-2.62 1.616-4.05 3.954-4.05 1.12 0 2.082.084 2.362.121v2.74h-1.622c-1.27 0-1.516.603-1.516 1.49v1.953h3.034l-.395 3.005h-2.64v7.55"/></svg></a>
+          <a href="https://www.instagram.com/p/DQMEwCvD01L/" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Lara</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="locations.html">Locations</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#bookkeeping">Bookkeeping</a></li>
+          <li><a href="services.html#taxation">Taxation</a></li>
+          <li><a href="services.html#payroll">Payroll &amp; Compliance</a></li>
+          <li><a href="services.html#advisory">Business Advisory</a></li>
+          <li><a href="services.html#smsf">SMSF &amp; Property</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Get in touch</h4>
+        <ul>
+          <li class="footer__contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+61406344333">0406 344 333</a></li>
+          <li class="footer__contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:admin@bodagh.com.au">admin@bodagh.com.au</a></li>
+          <li class="footer__contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>9 AM – 5 PM, Mon – Fri</li>
+          <li class="footer__contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Craigieburn, VIC</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <div class="footer__legal-links">
+        <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Disclaimer</a><a href="#">Cookies</a>
+      </div>
+      <div class="footer__copyright">© 2019 – <span id="year">2026</span> Bodagh Bookkeeping &amp; Tax · All rights reserved</div>
+    </div>
+    <p class="footer__disclaimer">Liability limited by a scheme approved under Professional Standards Legislation (if applicable — see OWNER-CONFIRMATIONS #24). Information on this site is general; for personal advice book a chat. Bodagh Bookkeeping &amp; Tax is a registered business in Victoria, Australia.</p>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+  const burger = document.querySelector('.nav__burger');
+  const closeBtn = document.querySelector('.nav__close');
+  if (burger) {
+    const backdrop = document.createElement('div');
+    backdrop.className = 'nav__backdrop';
+    document.body.appendChild(backdrop);
+    const openMenu = () => { nav.classList.add('menu-open'); burger.setAttribute('aria-expanded','true'); backdrop.classList.add('is-open'); document.body.style.overflow='hidden'; };
+    const closeMenu = () => { nav.classList.remove('menu-open'); burger.setAttribute('aria-expanded','false'); backdrop.classList.remove('is-open'); document.body.style.overflow=''; };
+    burger.addEventListener('click', () => nav.classList.contains('menu-open') ? closeMenu() : openMenu());
+    closeBtn?.addEventListener('click', closeMenu);
+    backdrop.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && nav.classList.contains('menu-open')) closeMenu(); });
+    document.querySelectorAll('.nav__links a').forEach(a => a.addEventListener('click', closeMenu));
+  }
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
