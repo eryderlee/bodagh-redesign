@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Bodagh Bookkeeping &amp; Tax · Simple, clear bookkeeping &amp; tax in Northern Melbourne</title>
+<title>Accounting for Northern Melbourne · Bodagh Bookkeeping &amp; Tax</title>
 <meta name="description" content="BAS, payroll, Xero set-up, individual returns — handled by Lara, in plain English, from a desk in Craigieburn.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +12,26 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Inter:wght@400;500;600;700&display=swap"></noscript>
 <style>
+/* ============================================================
+   FONT FALLBACKS — metrics-matched, so the swap-in is invisible
+   ============================================================ */
+@font-face {
+  font-family: "Fraunces Fallback";
+  src: local("Georgia"), local("Times New Roman");
+  size-adjust: 107%;
+  ascent-override: 92%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial"), local("Helvetica");
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
 /* ============================================================
    DESIGN TOKENS — single source of truth
    ============================================================ */
@@ -26,8 +46,8 @@
   --gold-2:  #816A3C;
   --gold-3:  #D9CFB5;
 
-  --font-display: "Fraunces", Georgia, serif;
-  --font-sans:    "Inter", -apple-system, system-ui, sans-serif;
+  --font-display: "Fraunces", "Fraunces Fallback", Georgia, serif;
+  --font-sans:    "Inter", "Inter Fallback", -apple-system, system-ui, sans-serif;
 
   --fs-eyebrow:   clamp(11px, 0.7vw + 9px, 13px);
   --fs-body:      clamp(15px, 0.4vw + 14px, 17px);
@@ -2172,7 +2192,7 @@ section { scroll-margin-top: 80px; }
     <span class="eyebrow">Bodagh Bookkeeping &amp; Tax · Craigieburn</span>
 
     <h1 class="hero__headline">
-      Bookkeeping &amp; tax for Northern Melbourne, <em>simple and clear.</em>
+      Accounting for <em>Northern Melbourne.</em>
     </h1>
 
     <p class="hero__subhead">
@@ -2240,8 +2260,8 @@ section { scroll-margin-top: 80px; }
     </div>
 
     <blockquote class="reviews-anchor__quote">
-      "Lara explained my BAS in plain English in 10 minutes — I've used three accountants before her and finally feel on top of it."
-      <cite>Recent Google review · Craigieburn</cite>
+      "Bodagh Bookkeeping and Tax is reliable, professional, and easy to work with. They keep my books organized and handle my taxes accurately, making everything stress-free. Highly recommended!"
+      <cite>TechSupport · Google review</cite>
     </blockquote>
 
     <div class="g-mark" aria-hidden="true">
@@ -3221,9 +3241,9 @@ section { scroll-margin-top: 80px; }
     // Hero entrance — choreographed reveals on the above-the-fold elements
     const heroPlan = [
       ['.hero__copy > .eyebrow', 'up',    0],
-      ['.hero__subhead',         'up',    300],
-      ['.hero__ctas',            'up',    600],
-      ['.hero__signals',         'up',    800],
+      ['.hero__subhead',         'up',    250],
+      ['.hero__ctas',            'up',    500],
+      ['.hero__signals',         'up',    600],
     ];
     heroPlan.forEach(([sel, type, delay]) => {
       const el = document.querySelector(sel);
@@ -3267,7 +3287,11 @@ section { scroll-margin-top: 80px; }
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-in');
+          // Double rAF so initial state renders before .is-in is applied,
+          // ensuring the transition actually plays even for above-fold elements
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            entry.target.classList.add('is-in');
+          }));
           observer.unobserve(entry.target);
         }
       });
